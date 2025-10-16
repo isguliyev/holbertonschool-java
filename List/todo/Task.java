@@ -21,7 +21,7 @@ public class Task {
     }
 
     public void setDescription(String description) throws Exception {
-        if (description.equals("") || description == null) {
+        if (description.isEmpty() || description == null) {
             throw new Exception("Invalid task description");
         }
 

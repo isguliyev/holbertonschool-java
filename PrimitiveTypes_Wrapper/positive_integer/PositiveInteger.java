@@ -10,12 +10,12 @@ public class PositiveInteger {
     }
 
     public boolean isPrime() {
-        if (getValue() == 1) {
+        if (this.value == 1) {
             return false;
         }
 
-        for (int i = 2; i * i <= getValue(); i++) {
-            if (getValue() % i == 0) {
+        for (int i = 2; i * i <= this.value; i++) {
+            if (this.value % i == 0) {
                 return false;
             }
         }

@@ -4,12 +4,12 @@ public class Rectangle extends GeometricShape {
 
     @Override
     public double area() {
-        return getWidth() * getHeight();
+        return this.width * this.height;
     }
 
     @Override
     public String toString() {
-        return String.format("[Rectangle] %.2f / %.2f", getWidth(), getHeight());
+        return String.format("[Rectangle] %.2f / %.2f", this.width, this.height);
     }
 
     public double getWidth() {

@@ -11,13 +11,13 @@ public class FeeBasedBankAccount extends BasicBankAccount {
     public void deposit(double value) throws InvalidOperationException {
         super.deposit(value);
         setBalance(getBalance() - 0.1d);
-        setTransactionCount(getTransactionCount() + 1);
+        setTransactionCount(this.transactionCount + 1);
     }
 
     public void withdraw(double value) throws InvalidOperationException {
         super.withdraw(value);
         setBalance(getBalance() - 0.1d);
-        setTransactionCount(getTransactionCount() + 1);
+        setTransactionCount(this.transactionCount + 1);
     }
 
     public int getTransactionCount() {

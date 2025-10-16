@@ -2,7 +2,7 @@ public class Square extends Rectangle {
     private double side;
 
     public String toString() {
-        return String.format("[Square] %.2f", getSide());
+        return String.format("[Square] %.2f", this.side);
     }
 
     public double getSide() {

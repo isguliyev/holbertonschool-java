@@ -3,11 +3,11 @@ public class CharacterGame {
     private String name;
 
     public void takeDamage(int damageAmount) {
-        setCurrentHealth(getCurrentHealth() - damageAmount);
+        setCurrentHealth(this.currentHealth - damageAmount);
     }
 
     public void receiveHealing(int healingAmount) {
-        setCurrentHealth(getCurrentHealth() + healingAmount);
+        setCurrentHealth(this.currentHealth + healingAmount);
     }
 
     public int getCurrentHealth() {

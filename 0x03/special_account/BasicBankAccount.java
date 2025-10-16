@@ -17,7 +17,7 @@ public class BasicBankAccount {
                 "Deposit amount must be greater than 0");
         }
 
-        setBalance(getBalance() + value);
+        setBalance(this.balance + value);
     }
 
     public void withdraw(double value) throws InvalidOperationException {
@@ -26,30 +26,28 @@ public class BasicBankAccount {
                 "Withdrawal amount must be greater than 0");
         }
 
-        if (getBalance() < value) {
+        if (this.balance < value) {
             throw new InvalidOperationException(
                 "Withdrawal amount must be less than the current balance");
         }
 
-        setBalance(getBalance() - value);
+        setBalance(this.balance - value);
     }
 
     public double calculateMonthlyFee() {
-        return getBalance() * 0.1d < 10.0d ? getBalance() * 0.1d : 10.0d;
+        return this.balance * 0.1d < 10.0d ? this.balance * 0.1d : 10.0d;
     }
 
     public double calculateMonthlyInterest() {
-        if (getBalance() < 0.0d) {
+        if (this.balance < 0.0d) {
             return 0.0d;
         }
 
-        return getBalance() * getAnnualInterestRate() / 1200.0d;
+        return this.balance * this.annualInterestRate / 1200.0d;
     }
 
     public void applyMonthlyUpdate() {
-        setBalance(getBalance()
-            - calculateMonthlyFee()
-            + calculateMonthlyInterest());
+        setBalance(this.balance - calculateMonthlyFee() + calculateMonthlyInterest());
     }
 
     public  String getAccountNumber() {

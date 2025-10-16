@@ -9,11 +9,11 @@ public class CharacterGame {
     }
 
     public void takeDamage(int damageAmount) {
-        setCurrentHealth(getCurrentHealth() - damageAmount);
+        setCurrentHealth(this.currentHealth - damageAmount);
     }
 
     public void receiveHealing(int healingAmount) {
-        setCurrentHealth(getCurrentHealth() + healingAmount);
+        setCurrentHealth(this.currentHealth + healingAmount);
     }
 
     public int getCurrentHealth() {
@@ -42,7 +42,7 @@ public class CharacterGame {
     }
 
     public void setName(String name) {
-        if (name == null ||  name.equals("")) {
+        if (name == null ||  name.isEmpty()) {
             return;
         }
 

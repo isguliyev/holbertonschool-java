@@ -8,7 +8,7 @@ public class TodoList {
     }
 
     public void listTasks() {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             System.out.printf("[%s]  Id: %d - Description: %s\n",
                 task.isDone ? "X" : " ",
                 task.getIdentifier(),
@@ -17,19 +17,19 @@ public class TodoList {
     }
 
     public void undoAll() {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             task.isDone = false;
         }
     }
 
     public void completeAll() {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             task.isDone = true;
         }
     }
 
     public boolean markTaskDone(int identifier) {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             if (task.getIdentifier() == identifier) {
                 task.isDone = true;
                 return true;
@@ -40,7 +40,7 @@ public class TodoList {
     }
 
     public boolean undoTask(int identifier) {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             if (task.getIdentifier() == identifier) {
                 task.isDone = false;
                 return true;
@@ -51,7 +51,7 @@ public class TodoList {
     }
 
     public void addTask(Task taskToAdd) throws Exception {
-        for (Task task : getTasks()) {
+        for (Task task : this.tasks) {
             if (task.getIdentifier() == taskToAdd.getIdentifier()) {
                 throw new Exception(
                     "Task with identifier "
@@ -60,7 +60,7 @@ public class TodoList {
             }
         }
 
-        getTasks().add(taskToAdd);
+        this.tasks.add(taskToAdd);
     }
 
     public ArrayList<Task> getTasks() {

@@ -11,21 +11,21 @@ public class Order {
         int boxesRemoved = 0;
         ArrayList<CookieOrder> flavorsToRemove = new ArrayList<CookieOrder>();
 
-        for (CookieOrder cookieOrder : getCookies()) {
+        for (CookieOrder cookieOrder : this.cookies) {
             if (cookieOrder.getFlavor().equals(flavor)) {
                 flavorsToRemove.add(cookieOrder);
                 boxesRemoved += cookieOrder.getBoxQuantity();
             }
         }
 
-        getCookies().removeAll(flavorsToRemove);
+        this.cookies.removeAll(flavorsToRemove);
         return boxesRemoved;
     }
 
     public int getTotalBoxes() {
         int totalBoxes = 0;
 
-        for (CookieOrder cookieOrder : getCookies()) {
+        for (CookieOrder cookieOrder : this.cookies) {
             totalBoxes += cookieOrder.getBoxQuantity();
         }
 
@@ -33,7 +33,7 @@ public class Order {
     }
 
     public void addCookieOrder(CookieOrder cookieOrder) {
-        getCookies().add(cookieOrder);
+        this.cookies.add(cookieOrder);
     }
 
     public ArrayList<CookieOrder> getCookies() {

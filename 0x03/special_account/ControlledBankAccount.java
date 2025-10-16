@@ -16,8 +16,8 @@ public class ControlledBankAccount extends BasicBankAccount {
     public void applyMonthlyUpdate() {
         super.applyMonthlyUpdate();
 
-        if (getBalance() < getMinimumBalance()) {
-            setBalance(getBalance() - getPenaltyAmount());
+        if (getBalance() < this.minimumBalance) {
+            setBalance(getBalance() - this.penaltyAmount);
         }
     }
 

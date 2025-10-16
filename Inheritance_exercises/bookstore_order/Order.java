@@ -13,7 +13,7 @@ public class Order {
             total += itemOrder.getProduct().getNetPrice() * itemOrder.getQuantity();
         }
 
-        return total * (1.0d - getDiscountPercentage() / 100.0d);
+        return total * (1.0d - this.discountPercentage / 100.0d);
     }
 
     public double getDiscountPercentage() {

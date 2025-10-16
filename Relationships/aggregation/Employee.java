@@ -10,11 +10,11 @@ public class Employee {
     }
 
     public void introduce() {
-        System.out.printf("Code: %s\n", getCode());
-        System.out.printf("Name: %s\n", getName());
-        System.out.printf("District: %s\n", getAddress().getDistrict());
-        System.out.printf("City: %s\n", getAddress().getCity());
-        System.out.printf("Country: %s\n", getAddress().getCountry());
+        System.out.printf("Code: %s\n", this.code);
+        System.out.printf("Name: %s\n", this.name);
+        System.out.printf("District: %s\n", this.address.getDistrict());
+        System.out.printf("City: %s\n", this.address.getCity());
+        System.out.printf("Country: %s\n", this.address.getCountry());
     }
 
     public String getName() {

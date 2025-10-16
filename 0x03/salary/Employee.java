@@ -6,11 +6,11 @@ public class Employee {
     }
 
     public double calculateBonus(Department department) {
-        return department.reachedTarget() ? getFixedSalary() * 0.1d : 0;
+        return department.reachedTarget() ? this.fixedSalary * 0.1d : 0.0d;
     }
 
     public double calculateTotalSalary(Department department) {
-        return getFixedSalary() + calculateBonus(department);
+        return this.fixedSalary + calculateBonus(department);
     }
 
     public double getFixedSalary() {

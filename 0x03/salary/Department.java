@@ -8,7 +8,7 @@ public class Department {
     }
 
     public boolean reachedTarget() {
-        return getAchievedTargetValue() >= getTargetValue();
+        return this.achievedTargetValue >= this.targetValue;
     }
 
     public double getTargetValue() {

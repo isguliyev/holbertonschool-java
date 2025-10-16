@@ -8,14 +8,14 @@ public class VideoProcessor {
     }
 
     public void registerChannel(NotificationChannel channel) {
-        getChannels().add(channel);
+        this.channels.add(channel);
     }
 
     public void process(Video video) {
         Message message = new Message(String.format("%s - %s", video.getFile(),
             video.getFormatVideo()), MessageType.LOG);
 
-        for (NotificationChannel channel : channels) {
+        for (NotificationChannel channel : this.channels) {
             channel.notify(message);
             System.out.println();
         }

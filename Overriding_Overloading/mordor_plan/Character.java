@@ -7,22 +7,22 @@ public class Character {
     @Override
     public String toString() {
         return String.format("%d - %s",
-            getHappinessPoints(),
+            this.happinessPoints,
             getCurrentMood().getClass().getSimpleName());
     }
 
     public void eat(Food[] foods) {
         for (Food food : foods) {
-            setHappinessPoints(getHappinessPoints() + food.getHappinessPoints());
+            setHappinessPoints(this.happinessPoints + food.getHappinessPoints());
         }
     }
 
     public Mood getCurrentMood() {
-        if (getHappinessPoints() < -5) {
+        if (this.happinessPoints < -5) {
             return new Angry();
-        } else if (getHappinessPoints() <= 0) {
+        } else if (this.happinessPoints <= 0) {
             return new Sad();
-        } else if (getHappinessPoints() <= 15) {
+        } else if (this.happinessPoints <= 15) {
             return new Happy();
         } else {
             return new VeryHappy();

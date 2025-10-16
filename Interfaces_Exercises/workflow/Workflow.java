@@ -9,7 +9,7 @@ public class Workflow {
     }
 
     public void registerActivity(Activity activity) {
-        getActivitys().add(activity);
+        this.activitys.add(activity);
     }
 
     public void setActivitys(ArrayList<Activity> activitys) {
