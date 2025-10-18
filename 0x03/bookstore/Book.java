@@ -33,7 +33,7 @@ public class Book {
     }
 
     public void setAuthor(String author) throws InvalidAuthorException {
-        if (author.isEmpty() || author == null) {
+        if (author == null || author.isEmpty()) {
             throw new InvalidAuthorException("Invalid author name");
         }
 
