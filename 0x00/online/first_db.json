@@ -1,0 +1,12 @@
+[{"id":1,"name":"Betty","email":"betty@techcamps.com","phone":12345678},
+{"id":2,"name":"Oliver","email":"oliver@techcamps.com","phone":15502347},
+{"id":3,"name":"Sophia","email":"sophia@techcamps.com","phone":50345621},
+{"id":4,"name":"Liam","email":"liam@techcamps.com","phone":50456783},
+{"id":5,"name":"Ava","email":"ava@techcamps.com","phone":50567345},
+{"id":6,"name":"Noah","email":"noah@techcamps.com","phone":50678923},
+{"id":7,"name":"Mia","email":"mia@techcamps.com","phone":50789123},
+{"id":8,"name":"Ethan","email":"ethan@techcamps.com","phone":50890674},
+{"id":9,"name":"Emma","email":"emma@techcamps.com","phone":50901234},
+{"id":10,"name":"Lucas","email":"lucas@techcamps.com","phone":51023987},
+{"id":11,"name":"Grace","email":"grace@techcamps.com","phone":51134098},
+{"id":12,"name":"Jack","email":"jack@techcamps.com","phone":51245901}]
