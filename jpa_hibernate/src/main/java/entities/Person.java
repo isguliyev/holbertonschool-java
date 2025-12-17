@@ -20,7 +20,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("{id=%d, name=%s, email=%s, age=%d, cpf=%s, birthDate=%s}",
+        return String.format("Person(id=%d, name=%s, email=%s, age=%d, cpf=%s, birthDate=%s)",
             this.id,
             this.name,
             this.email,

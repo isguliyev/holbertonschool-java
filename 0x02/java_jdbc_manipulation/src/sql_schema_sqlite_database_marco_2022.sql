@@ -1,0 +1,7 @@
+CREATE TABLE Customer (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name TEXT,
+    age SMALLINT,
+    cpf TEXT,
+    rg TEXT
+);

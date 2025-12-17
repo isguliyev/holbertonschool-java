@@ -11,6 +11,11 @@ public class PersonModel {
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("admin-jpa");
 
     public void create(Person person) {
+        if (person == null) {
+            System.err.println("person is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.persist(person);
@@ -21,6 +26,11 @@ public class PersonModel {
     }
 
     public void update(Person person) {
+        if (person == null) {
+            System.err.println("person is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.merge(person);
@@ -31,6 +41,11 @@ public class PersonModel {
     }
 
     public void delete(Person person) {
+        if (person == null) {
+            System.err.println("person is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.remove(entityManager.find(person.getClass(), person.getId()));
@@ -41,6 +56,11 @@ public class PersonModel {
     }
 
     public Person findById(Person person) {
+        if (person == null) {
+            System.err.println("person is null");
+            return null;
+        }
+
         Person result = null;
 
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
@@ -59,7 +79,7 @@ public class PersonModel {
 
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
-            people = entityManager.createNativeQuery("SELECT * FROM Person").getResultList();
+            people = entityManager.createNativeQuery("SELECT * FROM Person", Person.class).getResultList();
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             System.err.println(exception.getMessage());

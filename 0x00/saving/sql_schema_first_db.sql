@@ -2,5 +2,5 @@ CREATE TABLE CLIENT (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     name VARCHAR(80) NOT NULL,
     email VARCHAR(40) NOT NULL,
-    phone INTEGER);
-CREATE TABLE sqlite_sequence(name,seq);
+    phone INTEGER
+);

@@ -1,10 +1,16 @@
+// javac -cp "sqlite-jdbc-3.51.1.0.jar" -d target ConnectionSQLite.java
+// java -cp "target:sqlite-jdbc-3.51.1.0.jar" ConnectionSQLite
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionSQLite {
     public static void main(String[] args) {
-        Connection connection = initConnection();
+        try (Connection connection = initConnection();) {
+        } catch (SQLException exception) {
+            System.err.println(exception.getMessage());
+        }
     }
 
     public static Connection initConnection() {

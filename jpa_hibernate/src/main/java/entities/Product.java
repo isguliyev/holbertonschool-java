@@ -18,7 +18,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("{id=%d, name=%s, quantity=%d, price=%f, status=%b}",
+        return String.format("Prodcut(id=%d, name=%s, quantity=%d, price=%f, status=%b)",
             this.id,
             this.name,
             this.quantity,

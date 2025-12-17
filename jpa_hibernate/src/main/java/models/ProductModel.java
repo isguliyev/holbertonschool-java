@@ -11,6 +11,11 @@ public class ProductModel {
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("admin-jpa");
 
     public void create(Product product) {
+        if (product == null) {
+            System.err.println("product is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.persist(product);
@@ -21,6 +26,11 @@ public class ProductModel {
     }
 
     public void update(Product product) {
+        if (product == null) {
+            System.err.println("product is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.merge(product);
@@ -31,6 +41,11 @@ public class ProductModel {
     }
 
     public void delete(Product product) {
+        if (product == null) {
+            System.err.println("product is null");
+            return;
+        }
+
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
             entityManager.remove(entityManager.find(product.getClass(), product.getId()));
@@ -41,6 +56,11 @@ public class ProductModel {
     }
 
     public Product findById(Product product) {
+        if (product == null) {
+            System.err.println("product is null");
+            return null;
+        }
+
         Product result = null;
 
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
@@ -59,7 +79,7 @@ public class ProductModel {
 
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
-            products = entityManager.createNativeQuery("SELECT * FROM Product").getResultList();
+            products = entityManager.createNativeQuery("SELECT * FROM Product", Product.class).getResultList();
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             System.err.println(exception.getMessage());
