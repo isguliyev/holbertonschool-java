@@ -1,7 +1,6 @@
 package entities;
 
 import java.time.LocalDate;
-import java.time.Period;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -20,13 +19,15 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("Person(id=%d, name=%s, email=%s, age=%d, cpf=%s, birthDate=%s)",
+        return String.format(
+            "Person(id=%d, name=%s, email=%s, age=%d, cpf=%s, birthDate=%s)",
             this.id,
             this.name,
             this.email,
             this.age,
             this.cpf,
-            this.birthDate);
+            this.birthDate
+        );
     }
 
     public long getId() {

@@ -7,6 +7,7 @@ CREATE TABLE Person (
     name varchar(255),
     primary key (id)
 );
+
 CREATE TABLE Product (
     id integer,
     name varchar(255),

@@ -6,15 +6,11 @@ public abstract class Product {
     private String country;
     private double grossPrice;
 
-    public Product(
-        String title,
-        int year,
-        String country,
-        double grossPrice) {
-            setTitle(title);
-            setYear(year);
-            setCountry(country);
-            setGrossPrice(grossPrice);
+    public Product(String title, int year, String country, double grossPrice) {
+        setTitle(title);
+        setYear(year);
+        setCountry(country);
+        setGrossPrice(grossPrice);
     }
 
     public abstract double getNetPrice();

@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
     private String name;
-    private ArrayList<Double> transactions;
+    private List<Double> transactions;
 
     public Customer(String name, double initialTransactionAmount) {
         setName(name);
@@ -18,7 +19,7 @@ public class Customer {
         return this.name;
     }
 
-    public ArrayList<Double> getTransactions() {
+    public List<Double> getTransactions() {
         return this.transactions;
     }
 
@@ -26,7 +27,7 @@ public class Customer {
         this.name = name;
     }
 
-    public void setTransactions(ArrayList<Double> transactions) {
+    public void setTransactions(List<Double> transactions) {
         this.transactions = transactions;
     }
 }

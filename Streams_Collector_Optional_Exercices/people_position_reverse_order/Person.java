@@ -5,26 +5,30 @@ public class Person {
     private int age;
     private double salary;
 
-    public Person(int code,
+    public Person(
+        int code,
         String name,
         String position,
         int age,
-        double salary) {
-            setCode(code);
-            setName(name);
-            setPosition(position);
-            setAge(age);
-            setSalary(salary);
+        double salary
+    ) {
+        setCode(code);
+        setName(name);
+        setPosition(position);
+        setAge(age);
+        setSalary(salary);
     }
 
     @Override
     public String toString() {
-        return String.format("[%d] %s %s %d $ %f",
-        this.code,
-        this.name,
-        this.position,
-        this.age,
-        this.salary);
+        return String.format(
+            "[%d] %s %s %d $ %f",
+            this.code,
+            this.name,
+            this.position,
+            this.age,
+            this.salary
+        );
     }
 
     public int getCode() {

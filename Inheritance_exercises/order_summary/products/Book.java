@@ -12,11 +12,12 @@ public class Book extends Product {
         double grossPrice,
         int pages,
         String author,
-        int edition) {
-            super(title, year, country, grossPrice);
-            setPages(pages);
-            setAuthor(author);
-            setEdition(edition);
+        int edition
+    ) {
+        super(title, year, country, grossPrice);
+        setPages(pages);
+        setAuthor(author);
+        setEdition(edition);
     }
 
     @Override

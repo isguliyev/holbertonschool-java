@@ -6,10 +6,20 @@ public class Book {
     private double price;
 
     public Book(String title, String author, double price)
-    throws InvalidBookException, InvalidAuthorException {
+            throws InvalidBookException, InvalidAuthorException {
         setTitle(title);
         setAuthor(author);
         setPrice(price);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Title: %s - Author: %s - Price: %.2f",
+            this.title,
+            this.author,
+            this.price
+        );
     }
 
     public String getTitle() {

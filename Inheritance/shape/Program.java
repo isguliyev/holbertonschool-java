@@ -4,8 +4,8 @@ public class Program {
 
         try {
             System.out.printf("Area: %d", geometricShape.area());
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception exception) {
+            System.err.println(exception);
         }
     }
 }

@@ -12,10 +12,13 @@ public class PrintJDBCDrivers {
 
         while (enumeration.hasMoreElements()) {
             driver = enumeration.nextElement();
-            System.out.printf("%s %d.%d\n",
+
+            System.out.printf(
+                "%s %d.%d\n",
                 driver.getClass().getName(),
                 driver.getMajorVersion(),
-                driver.getMinorVersion());
+                driver.getMinorVersion()
+            );
         }
     }
 }

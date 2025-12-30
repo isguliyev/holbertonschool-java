@@ -6,10 +6,11 @@ public class ControlledBankAccount extends BasicBankAccount {
         String accountNumber,
         double annualInterestRate,
         double minimumBalance,
-        double penaltyAmount) {
-            super(accountNumber, annualInterestRate);
-            setMinimumBalance(minimumBalance);
-            setPenaltyAmount(penaltyAmount);
+        double penaltyAmount
+    ) {
+        super(accountNumber, annualInterestRate);
+        setMinimumBalance(minimumBalance);
+        setPenaltyAmount(penaltyAmount);
     }
 
     @Override

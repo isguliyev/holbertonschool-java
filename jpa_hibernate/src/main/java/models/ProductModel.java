@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ProductModel {
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("admin-jpa");
+    private final EntityManagerFactory entityManagerFactory
+    = Persistence.createEntityManagerFactory("admin-jpa");
 
     public void create(Product product) {
         if (product == null) {
@@ -79,7 +80,12 @@ public class ProductModel {
 
         try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
             entityManager.getTransaction().begin();
-            products = entityManager.createNativeQuery("SELECT * FROM Product", Product.class).getResultList();
+
+            products = entityManager.createNativeQuery(
+                "SELECT * FROM Product",
+                Product.class
+            ).getResultList();
+
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             System.err.println(exception.getMessage());

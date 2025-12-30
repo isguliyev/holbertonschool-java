@@ -8,7 +8,6 @@ public class EmailTest {
     }
 
     public static boolean test_email_over_50_characters() {
-        return !Person.emailValid(
-            "email_test_very_long_should_not_be_valid@domain.com");
+        return !Person.emailValid("email_test_very_long_should_not_be_valid@domain.com");
     }
 }

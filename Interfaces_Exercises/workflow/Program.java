@@ -12,16 +12,12 @@ public class Program {
 
         workflowMachine.execute(workflowEncodeVideos);
 
-        System.out.println("-----");
-
         Workflow workflowVideos = new Workflow();
 
         workflowVideos.registerActivity(new UploadVideo());
         workflowVideos.registerActivity(new SendEmail());
 
         workflowMachine.execute(workflowVideos);
-
-        System.out.println("-----");
 
         Workflow workflowVideosStatus = new Workflow();
 

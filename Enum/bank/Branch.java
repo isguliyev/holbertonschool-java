@@ -1,17 +1,16 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Branch {
     private String name;
-    private ArrayList<Customer> customers;
+    private List<Customer> customers;
 
     public Branch(String name) {
         setName(name);
         setCustomers(new ArrayList<Customer>());
     }
 
-    public boolean newCustomer(String customerName,
-        double initialTransactionAmount) {
-
+    public boolean newCustomer(String customerName, double initialTransactionAmount) {
         if (findCustomer(customerName) != null) {
             return false;
         }
@@ -21,9 +20,7 @@ public class Branch {
         return true;
     }
 
-    public boolean addCustomerTransaction(String customerName,
-        double transactionAmount) {
-
+    public boolean addCustomerTransaction(String customerName, double transactionAmount) {
         Customer customer = findCustomer(customerName);
 
         if (customer == null) {
@@ -49,7 +46,7 @@ public class Branch {
         return this.name;
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public List<Customer> getCustomers() {
         return this.customers;
     }
 
@@ -57,7 +54,7 @@ public class Branch {
         this.name = name;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
+    public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
 }

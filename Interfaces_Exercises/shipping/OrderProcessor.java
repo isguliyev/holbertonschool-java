@@ -1,4 +1,4 @@
-import providers.*;
+import providers.ShippingProvider;
 
 public class OrderProcessor {
     private ShippingProvider shippingProvider;
@@ -8,7 +8,12 @@ public class OrderProcessor {
     }
 
     public void process(Order order) {
-        order.setShipping(this.shippingProvider.calculateShipping(order.getWeight(), order.getTotal()));
+        order.setShipping(
+            this.shippingProvider.calculateShipping(
+                order.getWeight(),
+                order.getTotal()
+            )
+        );
     }
 
     public ShippingProvider getShippingProvider() {

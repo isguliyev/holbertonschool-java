@@ -13,10 +13,12 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Student { name='%s', age='%d', password='%s' }",
+        return String.format(
+            "Student { name='%s', age='%d', password='%s' }",
             this.name,
             this.age,
-            this.password);
+            this.password
+        );
     }
 
     public int getAge() {

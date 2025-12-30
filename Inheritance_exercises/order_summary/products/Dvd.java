@@ -12,11 +12,12 @@ public class Dvd extends Product {
         double grossPrice,
         String director,
         String genre,
-        int duration) {
-            super(title, year, country, grossPrice);
-            setDirector(director);
-            setGenre(genre);
-            setDuration(duration);
+        int duration
+    ) {
+        super(title, year, country, grossPrice);
+        setDirector(director);
+        setGenre(genre);
+        setDuration(duration);
     }
 
     @Override

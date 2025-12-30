@@ -7,10 +7,11 @@ public class Program {
 
         square.setSide(10);
 
-        if (Rectangle.class.isAssignableFrom(Square.class))
-        System.out.println("Square is a subclass of Rectangle");
-        else
-        System.out.println("Square is not a subclass of Rectangle");
+        if (Rectangle.class.isAssignableFrom(Square.class)) {
+            System.out.println("Square is a subclass of Rectangle");
+        } else {
+            System.out.println("Square is not a subclass of Rectangle");
+        }
 
         try {
             Field heightField = Rectangle.class.getDeclaredField("height");
@@ -20,12 +21,12 @@ public class Program {
             Field widthField = Rectangle.class.getDeclaredField("width");
             int changeWidth = widthField.getModifiers();
             System.out.printf("Field width is %s\n", Modifier.toString(changeWidth));
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception exception) {
+            System.err.println(exception.getMessage());
         }
 
         System.out.printf("Side: %.2f\n", square.getSide());
         System.out.printf("Area: %.2f\n", square.area());
-        System.out.printf(square.toString() + "\n");
+        System.out.println(square);
     }
 }

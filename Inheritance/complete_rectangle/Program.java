@@ -5,6 +5,6 @@ public class Program {
         rectangle.setHeight(4);
 
         System.out.printf("Area: %.2f\n", rectangle.area());
-        System.out.println(rectangle.toString());
+        System.out.println(rectangle);
     }
 }

@@ -4,14 +4,16 @@ public class Post {
     private String body;
     private String category;
 
-    public Post(String author,
+    public Post(
+        String author,
         String title,
         String body,
-        String category) {
-            setAuthor(author);
-            setTitle(title);
-            setBody(body);
-            setCategory(category);
+        String category
+    ) {
+        setAuthor(author);
+        setTitle(title);
+        setBody(body);
+        setCategory(category);
     }
 
     public String getAuthor() {

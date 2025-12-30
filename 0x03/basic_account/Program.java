@@ -1,111 +1,91 @@
 public class Program {
-    public static void main(String[] args) {
-        try {
-            BasicBankAccount account1 = new BasicBankAccount("AAA", 50.0);
+	public static void main(String[] args) {
+		try {
+			BasicBankAccount account1 = new BasicBankAccount("AAA", 50.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account1.getAccountNumber(),
-                account1.getBalance());
+			System.out.println(account1);
 
-            account1.deposit(100);
+			account1.deposit(100.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account1.getAccountNumber(),
-                account1.getBalance());
+			System.out.println(account1);
 
-            account1.withdraw(25);
+			account1.withdraw(25.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account1.getAccountNumber(),
-                account1.getBalance());
+			System.out.println(account1);
 
-            account1.applyMonthlyUpdate();
+			account1.applyMonthlyUpdate();
 
-            System.out.printf("Account %s - balance: %.2f\n\n",
-                account1.getAccountNumber(),
-                account1.getBalance());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+			System.out.println(account1);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		} finally {
+			System.out.println();
+		}
 
-        try {
-            BasicBankAccount account2 = new BasicBankAccount("BBB", 100.0);
+		try {
+			BasicBankAccount account2 = new BasicBankAccount("BBB", 100.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account2.getAccountNumber(),
-                account2.getBalance());
+			System.out.println(account2);
 
-            account2.deposit(10);
+			account2.deposit(10.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account2.getAccountNumber(),
-                account2.getBalance());
+			System.out.println(account2);
 
-            account2.withdraw(10);
+			account2.withdraw(10.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account2.getAccountNumber(),
-                account2.getBalance());
+			System.out.println(account2);
 
-            account2.applyMonthlyUpdate();
+			account2.applyMonthlyUpdate();
 
-            System.out.printf("Account %s - balance: %.2f\n\n",
-                account2.getAccountNumber(),
-                account2.getBalance());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+			System.out.println(account2);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		} finally {
+			System.out.println();
+		}
 
-        try {
-            BasicBankAccount account3 = new BasicBankAccount("CCC", 120.0);
+		try {
+			BasicBankAccount account3 = new BasicBankAccount("CCC", 120.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account3.getAccountNumber(),
-                account3.getBalance());
+			System.out.println(account3);
 
-            account3.deposit(1600);
+			account3.deposit(1600.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account3.getAccountNumber(),
-                account3.getBalance());
+			System.out.println(account3);
 
-            account3.applyMonthlyUpdate();
+			account3.applyMonthlyUpdate();
 
-            System.out.printf("Account %s - balance: %.2f\n\n",
-                account3.getAccountNumber(),
-                account3.getBalance());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+			System.out.println(account3);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		} finally {
+			System.out.println();
+		}
 
-        try {
-            BasicBankAccount account4 = new BasicBankAccount("DDD", 70.0);
+		try {
+			BasicBankAccount account4 = new BasicBankAccount("DDD", 70.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account4.getAccountNumber(),
-                account4.getBalance());
+			System.out.println(account4);
 
-            account4.deposit(0);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+			account4.deposit(0.0d);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		} finally {
+			System.out.println();
+		}
 
-        try {
-            BasicBankAccount account5 = new BasicBankAccount("EEE", 50.0);
+		try {
+			BasicBankAccount account5 = new BasicBankAccount("EEE", 50.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account5.getAccountNumber(),
-                account5.getBalance());
+			System.out.println(account5);
 
-            account5.deposit(25);
+			account5.deposit(25.0d);
 
-            System.out.printf("Account %s - balance: %.2f\n",
-                account5.getAccountNumber(),
-                account5.getBalance());
+			System.out.println(account5);
 
-            account5.withdraw(30);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
-    }
+			account5.withdraw(30.0d);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
+	}
 }

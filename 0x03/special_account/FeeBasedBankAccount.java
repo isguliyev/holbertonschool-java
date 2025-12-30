@@ -1,4 +1,4 @@
-import exceptions.*;
+import exceptions.InvalidOperationException;
 
 public class FeeBasedBankAccount extends BasicBankAccount {
     private int transactionCount;

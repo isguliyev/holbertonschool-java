@@ -9,7 +9,12 @@ public class Rectangle extends GeometricShape {
 
     @Override
     public String toString() {
-        return String.format("[Rectangle] %.2f / %.2f", this.width, this.height);
+        return String.format(
+            "[%s] %.2f / %.2f",
+            this.getClass().getSimpleName(),
+            this.width,
+            this.height
+        );
     }
 
     public double getWidth() {
@@ -22,8 +27,7 @@ public class Rectangle extends GeometricShape {
 
     public void setWidth(double width) throws IllegalArgumentException {
         if (width < 0) {
-            throw new IllegalArgumentException(
-                "Width must be greater than or equal to 0");
+            throw new IllegalArgumentException("Width must be greater than or equal to 0");
         }
 
         this.width = width;
@@ -31,8 +35,7 @@ public class Rectangle extends GeometricShape {
 
     public void setHeight(double height) throws IllegalArgumentException {
         if (height < 0) {
-            throw new IllegalArgumentException(
-                "Height must be greater than or equal to 0");
+            throw new IllegalArgumentException("Height must be greater than or equal to 0");
         }
 
         this.height = height;

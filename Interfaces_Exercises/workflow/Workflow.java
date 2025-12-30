@@ -1,8 +1,9 @@
-import activity.*;
+import activity.Activity;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Workflow {
-    private ArrayList<Activity> activitys;
+    private List<Activity> activitys;
 
     public Workflow() {
         setActivitys(new ArrayList<Activity>());
@@ -12,11 +13,11 @@ public class Workflow {
         this.activitys.add(activity);
     }
 
-    public void setActivitys(ArrayList<Activity> activitys) {
+    public void setActivitys(List<Activity> activitys) {
         this.activitys = activitys;
     }
 
-    public ArrayList<Activity> getActivitys() {
+    public List<Activity> getActivitys() {
         return this.activitys;
     }
 }

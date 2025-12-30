@@ -1,7 +1,8 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Mobile {
-    private ArrayList<Contact> contacts;
+    private List<Contact> contacts;
 
     public Mobile() {
         setContacts(new ArrayList<Contact>());
@@ -19,35 +20,32 @@ public class Mobile {
 
     public void addContact(Contact contact) throws Exception {
         if (getContactPosition(contact.getName()) != -1) {
-            throw new Exception(
-                "Could not add contact. Contact with this name already exists");
+            throw new Exception("Could not add contact. Contact with this name already exists");
         }
 
         this.contacts.add(contact);
     }
 
-    public void updateContact(Contact oldContact,
-        Contact newContact) throws Exception {
+    public void updateContact(Contact oldContact, Contact newContact) throws Exception {
 
         int index = getContactPosition(oldContact.getName());
 
         if (index == -1) {
-            throw new Exception(
-            "Could not modify contact. Contact does not exist");
+            throw new Exception("Could not modify contact. Contact does not exist");
         }
 
-        if (getContactPosition(newContact.getName()) > -1
-            && getContactPosition(newContact.getName()) != index) {
+        if (
+            getContactPosition(newContact.getName()) > -1
+            && getContactPosition(newContact.getName()) != index
+        ) {
 
-            throw new Exception(
-               "Could not modify contact. Contact with this name already exists");
+            throw new Exception("Could not modify contact. Contact with this name already exists");
         }
 
         this.contacts.set(index, newContact);
     }
 
     public void removeContact(Contact contact) throws Exception {
-
         int index = getContactPosition(contact.getName());
 
         if (index == -1) {
@@ -59,18 +57,20 @@ public class Mobile {
 
     public void listContacts() {
         for (Contact contact : this.contacts) {
-            System.out.printf("%s -> %s (%s)\n",
+            System.out.printf(
+                "%s -> %s (%s)\n",
                 contact.getName(),
                 contact.getPhoneNumber(),
-                contact.getType());
+                contact.getType()
+            );
         }
     }
 
-    public ArrayList<Contact> getContacts() {
+    public List<Contact> getContacts() {
         return this.contacts;
     }
 
-    public void setContacts(ArrayList<Contact> contacts) {
+    public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
 }

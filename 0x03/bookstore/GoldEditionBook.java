@@ -2,7 +2,7 @@ import exceptions.*;
 
 public class GoldEditionBook extends Book {
     public GoldEditionBook(String title, String author, double price)
-    throws InvalidBookException, InvalidAuthorException {
+            throws InvalidBookException, InvalidAuthorException {
         super(title, author, price);
     }
 

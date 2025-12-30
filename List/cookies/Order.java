@@ -1,7 +1,8 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Order {
-    private ArrayList<CookieOrder> cookies;
+    private List<CookieOrder> cookies;
 
     public Order() {
         setCookies(new ArrayList<CookieOrder>());
@@ -9,7 +10,8 @@ public class Order {
 
     public int removeFlavor(String flavor) {
         int boxesRemoved = 0;
-        ArrayList<CookieOrder> flavorsToRemove = new ArrayList<CookieOrder>();
+
+        List<CookieOrder> flavorsToRemove = new ArrayList<CookieOrder>();
 
         for (CookieOrder cookieOrder : this.cookies) {
             if (cookieOrder.getFlavor().equals(flavor)) {
@@ -19,6 +21,7 @@ public class Order {
         }
 
         this.cookies.removeAll(flavorsToRemove);
+
         return boxesRemoved;
     }
 
@@ -36,11 +39,11 @@ public class Order {
         this.cookies.add(cookieOrder);
     }
 
-    public ArrayList<CookieOrder> getCookies() {
+    public List<CookieOrder> getCookies() {
         return this.cookies;
     }
 
-    public void setCookies(ArrayList<CookieOrder> cookies) {
+    public void setCookies(List<CookieOrder> cookies) {
         this.cookies = cookies;
     }
 }

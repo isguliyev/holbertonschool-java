@@ -26,8 +26,7 @@ public class Author implements Comparable<Author> {
 
         Author other = (Author)object;
 
-        return other.getName().equals(this.name)
-            && other.getSurname().equals(this.surname);
+        return other.getName().equals(this.name) && other.getSurname().equals(this.surname);
     }
 
     @Override

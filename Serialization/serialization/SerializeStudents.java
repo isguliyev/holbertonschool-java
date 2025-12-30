@@ -1,5 +1,9 @@
 import java.util.List;
 import java.io.*;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
 
 public class SerializeStudents <T extends Serializable> {
     private String fileName;
@@ -8,25 +12,30 @@ public class SerializeStudents <T extends Serializable> {
         setFileName(fileName);
     }
 
+    @SuppressWarnings("unchecked")
     public List<T> deserialize() {
         List<T> students = null;
 
-        try (FileInputStream fileIn = new FileInputStream(this.fileName);
-            ObjectInputStream in = new ObjectInputStream(fileIn)) {
+        try (
+            FileInputStream fileIn = new FileInputStream(this.fileName);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+        ) {
             students = (List<T>)in.readObject();
-        } catch(Exception e) {
-            System.out.println("Unable to deserialize");
+        } catch(Exception exception) {
+            System.err.println("Unable to deserialize");
         }
 
         return students;
     }
 
     public void serialize(List<T> students) {
-        try (FileOutputStream fileOut = new FileOutputStream(this.fileName);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+        try (
+            FileOutputStream fileOut = new FileOutputStream(this.fileName);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        ) {
             out.writeObject(students);
-        } catch(Exception e) {
-            System.out.println("Unable to serialize");
+        } catch(Exception exception) {
+            System.err.println("Unable to serialize");
         }
     }
 

@@ -1,34 +1,22 @@
 public class Program {
     public static void main(String[] args) {
-        CharacterGame character1 = new CharacterGame(50, "Sonic");
+        CharacterGame characterGame = new CharacterGame(50, "Sonic");
 
-        character1.setName("");
+        characterGame.setName("");
 
-        System.out.printf("%s, %d, %s\n",
-            character1.getName(),
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.receiveHealing(91);
-        character1.setName(null);
+        characterGame.receiveHealing(91);
+        characterGame.setName(null);
 
-        System.out.printf("%s, %d, %s\n",
-            character1.getName(),
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.takeDamage(25);
+        characterGame.takeDamage(25);
 
-        System.out.printf("%s, %d, %s\n",
-            character1.getName(),
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.takeDamage(80);
+        characterGame.takeDamage(80);
 
-        System.out.printf("%s, %d, %s\n",
-            character1.getName(),
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
     }
 }

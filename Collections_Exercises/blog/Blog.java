@@ -2,7 +2,7 @@ import java.util.Set;
 import java.util.Map;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.TreeMap;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class Blog {
@@ -13,11 +13,13 @@ public class Blog {
     }
 
     public Map<String, Integer> getCountByCategory() {
-        Map<String, Integer> countByCategory = new TreeMap<String, Integer>();
+        Map<String, Integer> countByCategory = new HashMap<String, Integer>();
 
         for (Post post : this.posts) {
-            countByCategory.put(post.getCategory(),
-                countByCategory.getOrDefault(post.getCategory(), 0) + 1);
+            countByCategory.put(
+                post.getCategory(),
+                countByCategory.getOrDefault(post.getCategory(), 0) + 1
+            );
         }
 
         return countByCategory;

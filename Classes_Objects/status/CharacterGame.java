@@ -1,14 +1,27 @@
 public class CharacterGame {
+    public static final int MAX_HEALTH = 100;
+    public static final int MIN_HEALTH = 0;
+
     private int currentHealth;
     private String name;
     private String status;
 
+    @Override
+    public String toString() {
+        return String.format(
+            "Name: %s - Health: %d - %s",
+            this.name,
+            this.currentHealth,
+            this.status
+        );
+    }
+
     public void takeDamage(int damageAmount) {
-        setCurrentHealth(this.currentHealth - damageAmount);
+        this.setCurrentHealth(this.currentHealth - damageAmount);
     }
 
     public void receiveHealing(int healingAmount) {
-        setCurrentHealth(this.currentHealth + healingAmount);
+        this.setCurrentHealth(this.currentHealth + healingAmount);
     }
 
     public int getCurrentHealth() {
@@ -24,11 +37,11 @@ public class CharacterGame {
     }
 
     public void setCurrentHealth(int currentHealth) {
-        if (currentHealth <= 0) {
-            this.currentHealth = 0;
+        if (currentHealth <= MIN_HEALTH) {
+            this.currentHealth = MIN_HEALTH;
             this.status = "dead";
-        } else if (currentHealth >= 100) {
-            this.currentHealth = 100;
+        } else if (currentHealth >= MAX_HEALTH) {
+            this.currentHealth = MAX_HEALTH;
             this.status = "alive";
         } else {
             this.currentHealth = currentHealth;

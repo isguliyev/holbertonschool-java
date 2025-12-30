@@ -10,16 +10,22 @@ public class Program {
 
         List<Student> students = List.of(student1, student2, student3, student4, student5);
 
-        SerializeStudents<Student> serializeStudent1 = new SerializeStudents<Student>("students.data");
+        SerializeStudents<Student> serializeStudent1 = new SerializeStudents<Student>(
+            "students.data"
+        );
+
         serializeStudent1.serialize(students);
 
         List<Student> deserializationList1 = serializeStudent1.deserialize();
 
-        for(Student e : deserializationList1) {
-            System.out.println(e);
+        for(Student student : deserializationList1) {
+            System.out.println(student);
         }
 
-        SerializeStudents<Student> serializeStudent2 = new SerializeStudents<Student>("students1.data");
+        SerializeStudents<Student> serializeStudent2 = new SerializeStudents<Student>(
+            "students1.data"
+        );
+
         List<Student> deserializationList2 = serializeStudent2.deserialize();
     }
 }

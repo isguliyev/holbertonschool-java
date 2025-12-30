@@ -2,23 +2,47 @@ import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
-        Product product1 = new Product(1,
-            "Vortex Car", ProductCategory.TOY, 799.90);
+        Product product1 = new Product(
+            1,
+            "Vortex Car",
+            ProductCategory.TOY,
+            799.9d
+        );
 
-        Product product2 = new Product(2,
-            "Smart TV LED 32 HD LG", ProductCategory.ELECTRONIC, 1452.55);
+        Product product2 = new Product(
+            2,
+            "Smart TV LED 32 HD LG",
+            ProductCategory.ELECTRONIC,
+            1452.55d
+        );
 
-        Product product3 = new Product(3,
-            "Nintendo Switch", ProductCategory.ELECTRONIC, 2990.00);
+        Product product3 = new Product(
+            3,
+            "Nintendo Switch",
+            ProductCategory.ELECTRONIC,
+            2990.0d
+        );
 
-        Product product4 = new Product(4,
-            "Dune", ProductCategory.BOOK, 21.88);
+        Product product4 = new Product(
+            4,
+            "Dune",
+            ProductCategory.BOOK,
+            21.88d
+        );
 
-        Product product5 = new Product(5,
-            "One of Us Is Lying", ProductCategory.BOOK, 38.30);
+        Product product5 = new Product(
+            5,
+            "One of Us Is Lying",
+            ProductCategory.BOOK,
+            38.3d
+        );
 
-        Product product6 = new Product(6,
-            "War And Peace", ProductCategory.BOOK, 27.50);
+        Product product6 = new Product(
+            6,
+            "War And Peace",
+            ProductCategory.BOOK,
+            27.5d
+        );
 
         Client client1 = new Client(1, "Jane Doe", false);
         Client client2 = new Client(2, "John Bannins", true);

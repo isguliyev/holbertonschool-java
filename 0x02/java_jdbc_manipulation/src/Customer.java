@@ -7,16 +7,18 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer (Integer id,
+    public Customer (
+        Integer id,
         String name,
         Integer age,
         String cpf,
-        String rg) {
-            setId(id);
-            setName(name);
-            setAge(age);
-            setCpf(cpf);
-            setRg(rg);
+        String rg
+    ) {
+        setId(id);
+        setName(name);
+        setAge(age);
+        setCpf(cpf);
+        setRg(rg);
     }
 
     public Integer getId() {

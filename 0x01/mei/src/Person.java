@@ -13,11 +13,13 @@ public class Person {
     public boolean isMEI() {
         int age = Period.between(this.birthDate, LocalDate.now()).getYears();
 
-        return !(this.anotherCompanyOwner
+        return !(
+            this.anotherCompanyOwner
             || this.pensioner
             || this.publicServer
             || age < 18
-            || calculateYearlySalary() > 130000.0f);
+            || calculateYearlySalary() > 130000.0f
+        );
     }
 
     public float calculateYearlySalary() {

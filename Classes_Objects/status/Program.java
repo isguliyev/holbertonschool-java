@@ -1,36 +1,26 @@
 public class Program {
     public static void main(String[] args) {
-        CharacterGame character1 = new CharacterGame();
+        CharacterGame characterGame = new CharacterGame();
 
-        character1.setName("Sonic");
-        character1.setCurrentHealth(0);
+        characterGame.setName("Sonic");
+        characterGame.setCurrentHealth(0);
 
-        System.out.printf("%d - %s\n",
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.receiveHealing(90);
+        characterGame.receiveHealing(90);
 
-        System.out.printf("%d - %s\n",
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.takeDamage(25);
+        characterGame.takeDamage(25);
 
-        System.out.printf("%d - %s\n",
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.takeDamage(80);
+        characterGame.takeDamage(80);
 
-        System.out.printf("%d - %s\n",
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
 
-        character1.receiveHealing(10);
+        characterGame.receiveHealing(10);
 
-        System.out.printf("%d - %s\n",
-            character1.getCurrentHealth(),
-            character1.getStatus());
+        System.out.println(characterGame);
     }
 }

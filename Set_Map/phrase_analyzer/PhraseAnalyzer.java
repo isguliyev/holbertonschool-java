@@ -1,8 +1,9 @@
 import java.util.TreeMap;
+import java.util.Map;
 
 public class PhraseAnalyzer {
-    public static TreeMap<String, Integer> wordCount(String text) {
-        TreeMap<String, Integer> frequency = new TreeMap<String, Integer>();
+    public static Map<String, Integer> wordCount(String text) {
+        Map<String, Integer> frequency = new TreeMap<String, Integer>();
 
         if (text == null || text.isEmpty()) {
             return frequency;

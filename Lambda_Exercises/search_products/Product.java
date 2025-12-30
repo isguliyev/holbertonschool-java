@@ -5,26 +5,30 @@ public class Product {
     private int stockQuantity;
     private ProductTypes type;
 
-    public Product(String name,
+    public Product(
+        String name,
         double price,
         double weight,
         int stockQuantity,
-        ProductTypes type) {
-            setName(name);
-            setPrice(price);
-            setWeight(weight);
-            setStockQuantity(stockQuantity);
-            setType(type);
+        ProductTypes type
+    ) {
+        setName(name);
+        setPrice(price);
+        setWeight(weight);
+        setStockQuantity(stockQuantity);
+        setType(type);
     }
 
     @Override
     public String toString() {
-        return String.format("%s %f %f %d %s",
+        return String.format(
+            "%s %f %f %d %s",
             this.name,
             this.price,
             this.weight,
             this.stockQuantity,
-            this.type);
+            this.type
+        );
     }
 
     public String getName() {

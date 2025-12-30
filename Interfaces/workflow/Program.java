@@ -24,21 +24,9 @@ public class Program {
         Video video3 = new Video("video3.mkv", FormatVideo.MKV);
 
         videoProcessor1.process(video1);
-
-        System.out.println();
-
         videoProcessor2.process(video1);
-
-        System.out.println();
-
         videoProcessor3.process(video2);
-
-        System.out.println();
-
         videoProcessor4.process(video3);
-
-        System.out.println();
-
         videoProcessor5.process(video3);
     }
 }

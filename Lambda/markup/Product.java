@@ -5,7 +5,8 @@ public class Product {
     private double price;
     private String name;
     private double markupPercentage;
-    public Supplier<Double> priceWithMarkup = () -> this.price * (1.0d + markupPercentage / 100.0d);
+    public Supplier<Double> priceWithMarkup
+        = () -> this.price * (1.0d + markupPercentage / 100.0d);
     public Consumer<Double> updateMarkup = (value) -> this.markupPercentage = value;
 
     public Product(double price, String name) {

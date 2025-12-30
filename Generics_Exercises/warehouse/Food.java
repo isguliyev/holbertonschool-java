@@ -11,10 +11,12 @@ public class Food {
 
     @Override
     public String toString() {
-        return String.format("[%s] %f $ %f",
+        return String.format(
+            "[%s] %f $ %f",
             this.name,
             this.calories,
-            this.price);
+            this.price
+        );
     }
 
     public String getName() {

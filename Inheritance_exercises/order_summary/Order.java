@@ -19,17 +19,23 @@ public class Order {
                 itemOrder.getProduct().getTitle(),
                 itemOrder.getProduct().getNetPrice(),
                 itemOrder.getQuantity(),
-                itemOrder.getProduct().getNetPrice() * itemOrder.getQuantity());
+                itemOrder.getProduct().getNetPrice() * itemOrder.getQuantity()
+            );
+
             total += itemOrder.getProduct().getNetPrice() * itemOrder.getQuantity();
         }
 
         System.out.println("----------------------------");
-        System.out.printf("DISCOUNT: %.2f\n",
-            total * this.discountPercentage / 100);
+        System.out.printf(
+            "DISCOUNT: %.2f\n",
+            total * this.discountPercentage / 100.0d
+        );
         System.out.printf("TOTAL PRODUCTS: %.2f\n", total);
         System.out.println("----------------------------");
-        System.out.printf("TOTAL ORDER: %.2f\n",
-            total * (1.0d - this.discountPercentage / 100.0d));
+        System.out.printf(
+            "TOTAL ORDER: %.2f\n",
+            total * (1.0d - this.discountPercentage / 100.0d)
+        );
         System.out.println("----------------------------");
     }
 

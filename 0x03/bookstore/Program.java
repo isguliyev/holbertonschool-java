@@ -1,74 +1,63 @@
 public class Program {
-    public static void main(String[] args) {
-        try {
-            Book book1 = new Book(
-                "Robinson Crusoe",
-                "Daniel Defoe",
-                56);
+	public static void main(String[] args) {
+		try {
+			Book book1 = new Book(
+				"Robinson Crusoe",
+				"Daniel Defoe",
+				56.0d
+			);
 
-            System.out.printf("Title: %s - Author: %s - Price: %.2f\n",
-                book1.getTitle(),
-                book1.getAuthor(),
-                book1.getPrice());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+			System.out.println(book1);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            GoldEditionBook goldEditionBook1 = new GoldEditionBook(
-                "Frankenstein",
-                "Mary Shelley",
-                38.30);
+		try {
+			GoldEditionBook goldEditionBook1 = new GoldEditionBook(
+				"Frankenstein",
+				"Mary Shelley",
+				38.30d
+			);
 
-            System.out.printf("Title: %s - Author: %s - Price: %.2f\n",
-                goldEditionBook1.getTitle(),
-                goldEditionBook1.getAuthor(),
-                goldEditionBook1.getPrice());
+			System.out.println(goldEditionBook1);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+		try {
+			GoldEditionBook goldEditionBook2 = new GoldEditionBook(
+				"Alice’s Adventures in Wonderland",
+				"Lewis Carroll",
+				21.88d
+			);
 
-        try {
-            GoldEditionBook goldEditionBook2 = new GoldEditionBook(
-                "Alice’s Adventures in Wonderland",
-                "Lewis Carroll",
-                21.88);
+			System.out.println(goldEditionBook2);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-            System.out.printf("Title: %s - Author: %s - Price: %.2f\n",
-                goldEditionBook2.getTitle(),
-                goldEditionBook2.getAuthor(),
-                goldEditionBook2.getPrice());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+		try {
+			Book book2 = new Book(
+				"Dracula",
+				"Bram Stoker",
+				15.99d
+			);
 
-        try {
-            Book book2 = new Book(
-                "Dracula",
-                "Bram Stoker",
-                15.99);
+			System.out.println(book2);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-            System.out.printf("Title: %s - Author: %s - Price: %.2f\n",
-                book2.getTitle(),
-                book2.getAuthor(),
-                book2.getPrice());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
+		try {
+			Book book3 = new Book(
+				"The Great Gatsby",
+				"F. Scott Fitzgerald",
+				0.0d
+			);
 
-        try {
-            Book book3 = new Book(
-                "The Great Gatsby",
-                "F. Scott Fitzgerald",
-                0);
-
-            System.out.printf("Title: %s - Author: %s - Price: %.2f\n",
-                book3.getTitle(),
-                book3.getAuthor(),
-                book3.getPrice());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "\n");
-        }
-    }
+			System.out.println(book3);
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
+	}
 }

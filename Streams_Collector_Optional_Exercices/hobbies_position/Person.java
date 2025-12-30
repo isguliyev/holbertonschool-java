@@ -8,28 +8,32 @@ public class Person {
     private double salary;
     private List<String> hobbies;
 
-    public Person(int code,
+    public Person(
+        int code,
         String name,
         String position,
         int age,
         double salary,
-        List<String> hobbies) {
-            setCode(code);
-            setName(name);
-            setPosition(position);
-            setAge(age);
-            setSalary(salary);
-            setHobbies(hobbies);
+        List<String> hobbies
+    ) {
+        setCode(code);
+        setName(name);
+        setPosition(position);
+        setAge(age);
+        setSalary(salary);
+        setHobbies(hobbies);
     }
 
     @Override
     public String toString() {
-        return String.format("[%d] %s %s %d $ %.2f",
-        this.code,
-        this.name,
-        this.position,
-        this.age,
-        this.salary);
+        return String.format(
+            "[%d] %s %s %d $ %.2f",
+            this.code,
+            this.name,
+            this.position,
+            this.age,
+            this.salary
+        );
     }
 
     public int getCode() {

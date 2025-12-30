@@ -1,4 +1,4 @@
-import food.*;
+import food.Food;
 import mood.*;
 
 public class Character {
@@ -6,9 +6,11 @@ public class Character {
 
     @Override
     public String toString() {
-        return String.format("%d - %s",
+        return String.format(
+            "%d - %s",
             this.happinessPoints,
-            getCurrentMood().getClass().getSimpleName());
+            getCurrentMood().getClass().getSimpleName()
+        );
     }
 
     public void eat(Food[] foods) {

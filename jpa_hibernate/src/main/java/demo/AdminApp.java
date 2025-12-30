@@ -47,9 +47,6 @@ public class AdminApp {
         personModel.delete(person);
         productModel.delete(product);
 
-        personModel.create(person);
-        productModel.create(product);
-
         Person anotherPerson = new Person();
 
         anotherPerson.setName("Finn Mertens");

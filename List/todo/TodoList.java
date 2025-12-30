@@ -1,7 +1,8 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class TodoList {
-    private ArrayList<Task> tasks;
+    private List<Task> tasks;
 
     public TodoList() {
         setTasks(new ArrayList<Task>());
@@ -9,10 +10,12 @@ public class TodoList {
 
     public void listTasks() {
         for (Task task : this.tasks) {
-            System.out.printf("[%s]  Id: %d - Description: %s\n",
+            System.out.printf(
+                "[%s]  Id: %d - Description: %s\n",
                 task.isDone ? "X" : " ",
                 task.getIdentifier(),
-                task.getDescription());
+                task.getDescription()
+            );
         }
     }
 
@@ -56,18 +59,19 @@ public class TodoList {
                 throw new Exception(
                     "Task with identifier "
                     + task.getIdentifier()
-                    + " already exists in the list");
+                    + " already exists in the list"
+                );
             }
         }
 
         this.tasks.add(taskToAdd);
     }
 
-    public ArrayList<Task> getTasks() {
+    public List<Task> getTasks() {
         return this.tasks;
     }
 
-    public void setTasks(ArrayList<Task> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 }

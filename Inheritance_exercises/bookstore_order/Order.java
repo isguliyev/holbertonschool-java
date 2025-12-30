@@ -9,6 +9,7 @@ public class Order {
 
     public double calculateTotal() {
         double total = 0.0d;
+
         for (ItemOrder itemOrder : items) {
             total += itemOrder.getProduct().getNetPrice() * itemOrder.getQuantity();
         }

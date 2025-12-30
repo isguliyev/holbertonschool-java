@@ -33,7 +33,6 @@ public class Blog {
             if (!allPostsByCategories.containsKey(post.getCategory())) {
                 allPostsByCategories.put(post.getCategory(), new TreeSet<Post>());
             }
-
             allPostsByCategories.get(post.getCategory()).add(post);
         }
 
@@ -68,8 +67,10 @@ public class Blog {
         Map<Categories, Integer> categoryFrequency = new TreeMap<Categories, Integer>();
 
         for (Post post : this.posts) {
-            categoryFrequency.put(post.getCategory(),
-                categoryFrequency.getOrDefault(post.getCategory(), 0) + 1);
+            categoryFrequency.put(
+                post.getCategory(),
+                categoryFrequency.getOrDefault(post.getCategory(), 0) + 1
+            );
         }
 
         return categoryFrequency;
@@ -87,8 +88,10 @@ public class Blog {
 
     public void addPost(Post postToAdd) throws RuntimeException {
         for (Post post : this.posts) {
-            if (post.getAuthor().equals(postToAdd.getAuthor())
-                && post.getTitle().equals(postToAdd.getTitle())) {
+            if (
+                post.getAuthor().equals(postToAdd.getAuthor())
+                && post.getTitle().equals(postToAdd.getTitle())
+            ) {
                 throw new RuntimeException("Post already exists");
             }
         }

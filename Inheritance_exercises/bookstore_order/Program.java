@@ -4,45 +4,51 @@ public class Program {
 			"Dune",
 			2017,
 			"United States",
-			56.30,
+			56.3d,
 			680,
 			"Frank Herbert",
-			1);
+			1
+		);
 
 		products.Book book2 = new products.Book(
 			"One of Us Is Lying",
 			2018,
 			"United States",
-			34.93,
+			34.93d,
 			384,
 			"Karen McManus",
-			1);
+			1
+		);
 
-		products.Book book3 = new products.Book("War And Peace",
+		products.Book book3 = new products.Book(
+			"War And Peace",
 			1869,
 			"United States",
-			31.70,
+			31.7d,
 			272,
 			"Leo Tolstoy",
-			1);
+			1
+		);
 
 		products.Dvd dvd1 = new products.Dvd(
 			"Underworld - Blood Wars",
 			2016,
 			"United States",
-			16.90,
+			16.9d,
 			"Anna Foerster",
 			"Action",
-			91);
+			91
+		);
 
 		products.Dvd dvd2 = new products.Dvd(
 			"Annabelle - Creation",
 			2017,
 			"United States",
-			39.90,
+			39.9d,
 			"Jame Wan and Peter Safran",
 			"Horror",
-			109);
+			109
+		);
 
 		ItemOrder[] itemOrder1 = new ItemOrder[] {
 			new ItemOrder(book1, 1),

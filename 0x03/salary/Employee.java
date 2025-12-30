@@ -10,7 +10,7 @@ public class Employee {
     }
 
     public double calculateTotalSalary(Department department) {
-        return this.fixedSalary + calculateBonus(department);
+        return this.fixedSalary + this.calculateBonus(department);
     }
 
     public double getFixedSalary() {

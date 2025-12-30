@@ -1,4 +1,4 @@
 @FunctionalInterface
 public interface SalaryCalculator {
-    double calculate(double value);
+    public double calculate(double value);
 }

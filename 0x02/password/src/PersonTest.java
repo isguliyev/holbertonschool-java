@@ -1,5 +1,5 @@
-// compile: javac -cp "junit-jupiter-api-6.0.0.jar:apiguardian-api-1.1.2.jar:junit-jupiter-params-6.0.0.jar" -d target Person.java PersonTest.java
-// run: java -jar junit-platform-console-standalone-6.0.0.jar execute -cp target --select-class PersonTest
+// javac -cp "junit-jupiter-api-6.0.0.jar:apiguardian-api-1.1.2.jar:junit-jupiter-params-6.0.0.jar" -d target Person.java PersonTest.java
+// java -jar junit-platform-console-standalone-6.0.0.jar execute -cp target --select-class PersonTest
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

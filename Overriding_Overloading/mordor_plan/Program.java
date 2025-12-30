@@ -1,4 +1,3 @@
-import mood.*;
 import food.*;
 
 public class Program {
@@ -8,47 +7,55 @@ public class Program {
         Character legolas = new Character();
         Character tauriel = new Character();
 
-        gandalf.eat(new Food[] {
-            new Apple(),
-            new Apple(),
-            new Mushroom(),
-            new OtherFood()
-        });
+        gandalf.eat(
+            new Food[] {
+                new Apple(),
+                new Apple(),
+                new Mushroom(),
+                new OtherFood()
+            }
+        );
 
-        System.out.println(gandalf.toString());
+        System.out.println(gandalf);
 
-        bilbo.eat(new Food[] {
-            new HoneyCake(),
-            new Apple(),
-            new Melon(),
-            new Mushroom()
-        });
+        bilbo.eat(
+            new Food[] {
+                new HoneyCake(),
+                new Apple(),
+                new Melon(),
+                new Mushroom()
+            }
+        );
 
-        System.out.println(bilbo.toString());
+        System.out.println(bilbo);
 
-        legolas.eat(new Food[] {
-            new HoneyCake(),
-            new Apple(),
-            new Melon(),
-            new Mushroom(),
-            new HoneyCake(),
-            new Cram(),
-            new Cram()
-        });
+        legolas.eat(
+            new Food[] {
+                new HoneyCake(),
+                new Apple(),
+                new Melon(),
+                new Mushroom(),
+                new HoneyCake(),
+                new Cram(),
+                new Cram()
+            }
+        );
 
-        System.out.println(legolas.toString());
+        System.out.println(legolas);
 
-        legolas.eat(new Food[] {
-            new HoneyCake(),
-            new Apple(),
-            new Melon(),
-            new Mushroom(),
-            new HoneyCake(),
-            new Lembas(),
-            new Lembas(),
-            new Cram()
-        });
+        legolas.eat(
+            new Food[] {
+                new HoneyCake(),
+                new Apple(),
+                new Melon(),
+                new Mushroom(),
+                new HoneyCake(),
+                new Lembas(),
+                new Lembas(),
+                new Cram()
+            }
+        );
 
-        System.out.println(legolas.toString());
+        System.out.println(legolas);
     }
 }

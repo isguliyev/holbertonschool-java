@@ -26,8 +26,7 @@ public class Phone {
 
         Phone other = (Phone)object;
 
-        return other.getAreaCode().equals(this.areaCode)
-            && other.getNumber().equals(this.number);
+        return other.getAreaCode().equals(this.areaCode) && other.getNumber().equals(this.number);
     }
 
     @Override

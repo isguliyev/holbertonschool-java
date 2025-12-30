@@ -7,20 +7,22 @@ public class Address {
     private String state;
     private String country;
 
-    public Address(String street,
+    public Address(
+        String street,
         String number,
         String complement,
         String district,
         String city,
         String state,
-        String country) {
-            setStreet(street);
-            setNumber(number);
-            setComplement(complement);
-            setDistrict(district);
-            setCity(city);
-            setState(state);
-            setCountry(country);
+        String country
+    ) {
+        setStreet(street);
+        setNumber(number);
+        setComplement(complement);
+        setDistrict(district);
+        setCity(city);
+        setState(state);
+        setCountry(country);
     }
 
     public String getStreet() {

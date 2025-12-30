@@ -1,4 +1,4 @@
-import exceptions.*;
+import exceptions.InvalidOperationException;
 
 public class BasicBankAccount {
     private String accountNumber;
@@ -11,10 +11,14 @@ public class BasicBankAccount {
         setAnnualInterestRate(annualInterestRate);
     }
 
+    @Override
+    public String toString() {
+        return String.format("Account %s - balance: %.2f", this.accountNumber, this.balance);
+    }
+
     public void deposit(double value) throws InvalidOperationException {
         if (value <= 0.0d) {
-            throw new InvalidOperationException(
-                "Deposit amount must be greater than 0");
+            throw new InvalidOperationException("Deposit amount must be greater than 0");
         }
 
         setBalance(this.balance + value);
@@ -22,20 +26,20 @@ public class BasicBankAccount {
 
     public void withdraw(double value) throws InvalidOperationException {
         if (value <= 0.0d) {
-            throw new InvalidOperationException(
-                "Withdrawal amount must be greater than 0");
+            throw new InvalidOperationException("Withdrawal amount must be greater than 0");
         }
 
         if (this.balance < value) {
             throw new InvalidOperationException(
-                "Withdrawal amount must be less than the current balance");
+                "Withdrawal amount must be less than the current balance"
+            );
         }
 
-        setBalance(this.balance - value);
+        this.balance -= value;
     }
 
     public double calculateMonthlyFee() {
-        return this.balance * 0.1d < 10.0d ? this.balance * 0.1d : 10.0d;
+        return Math.min(this.balance * 0.1d, 10.0d);
     }
 
     public double calculateMonthlyInterest() {
@@ -47,7 +51,7 @@ public class BasicBankAccount {
     }
 
     public void applyMonthlyUpdate() {
-        setBalance(this.balance - calculateMonthlyFee() + calculateMonthlyInterest());
+        this.balance = this.balance - calculateMonthlyFee() + calculateMonthlyInterest();
     }
 
     public  String getAccountNumber() {

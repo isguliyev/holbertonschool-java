@@ -16,7 +16,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         try (Connection connection = DriverManager.getConnection(connectionUrl);) {
             return connection;
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
 
         return null;
@@ -29,7 +29,10 @@ public class CustomerDAOImpl implements CustomerDAO {
             return;
         }
 
-        try (Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement();) {
+        try (
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();
+        ) {
             statement.executeUpdate(
                 """
                 CREATE TABLE IF NOT EXISTS Customer (
@@ -42,7 +45,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                 """
             );
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
     }
 
@@ -60,14 +63,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         String sql = "INSERT INTO Customer (name, age, cpf, rg) VALUES (?, ?, ?, ?);";
 
-        try (Connection connection = DriverManager.getConnection(connectionUrl); PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+        try (
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setInt(2, customer.getAge());
             preparedStatement.setString(3, customer.getCpf());
             preparedStatement.setString(4, customer.getRg());
             preparedStatement.executeUpdate();
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
     }
 
@@ -80,18 +86,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         String sql = "SELECT * FROM Customer;";
 
-        try (Connection connection = DriverManager.getConnection(connectionUrl); Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(sql);) {
+        try (
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+        ) {
             System.out.println("id,name,age,cpf,rg");
             while (resultSet.next()) {
-                System.out.printf("%d,%s,%d,%s,%s\n",
+                System.out.printf(
+                    "%d,%s,%d,%s,%s\n",
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getInt("age"),
                     resultSet.getString("cpf"),
-                    resultSet.getString("rg"));
+                    resultSet.getString("rg")
+                );
             }
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
     }
 
@@ -109,13 +121,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         String sql = "UPDATE Customer SET name=?, age=? WHERE id=?;";
 
-        try (Connection connection = DriverManager.getConnection(connectionUrl); PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+        try (
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, age);
             preparedStatement.setInt(3, id);
             preparedStatement.executeUpdate();
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
     }
 
@@ -128,11 +143,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         String sql = "DELETE FROM Customer WHERE id=?;";
 
-        try (Connection connection = DriverManager.getConnection(connectionUrl); PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+        try (
+            Connection connection = DriverManager.getConnection(connectionUrl);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
     }
 }

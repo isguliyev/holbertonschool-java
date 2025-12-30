@@ -1,15 +1,9 @@
 public class Program {
     public static void main(String[] args) {
-        boolean characterInUppercase1 = TheCharacter.IsUpper('a');
-        boolean characterInUppercase2 = TheCharacter.IsUpper('B');
-        boolean characterInUppercase3 = TheCharacter.IsUpper('d');
-        boolean characterInUppercase4 = TheCharacter.IsUpper('f');
-        boolean characterInUppercase5 = TheCharacter.IsUpper('G');
-
-        System.out.printf("%b\n", characterInUppercase1);
-        System.out.printf("%b\n", characterInUppercase2);
-        System.out.printf("%b\n", characterInUppercase3);
-        System.out.printf("%b\n", characterInUppercase4);
-        System.out.printf("%b\n", characterInUppercase5);
+        System.out.printf("%b\n", TheCharacter.IsUpper('a'));
+        System.out.printf("%b\n", TheCharacter.IsUpper('B'));
+        System.out.printf("%b\n", TheCharacter.IsUpper('d'));
+        System.out.printf("%b\n", TheCharacter.IsUpper('f'));
+        System.out.printf("%b\n", TheCharacter.IsUpper('G'));
     }
 }

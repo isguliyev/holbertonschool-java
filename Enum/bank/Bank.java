@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bank {
     private String name;
-    private ArrayList<Branch> branches;
+    private List<Branch> branches;
 
     public Bank(String name) {
         setName(name);
@@ -29,9 +30,11 @@ public class Bank {
         return true;
     }
 
-    public boolean addCustomer(String branchName,
+    public boolean addCustomer(
+        String branchName,
         String customerName,
-        double initialTransactionAmount) {
+        double initialTransactionAmount
+    ) {
 
         Branch branch = findBranch(branchName);
 
@@ -42,10 +45,11 @@ public class Bank {
         return branch.newCustomer(customerName, initialTransactionAmount);
     }
 
-    public boolean addCustomerTransaction(String branchName,
+    public boolean addCustomerTransaction(
+        String branchName,
         String customerName,
-        double transactionAmount) {
-
+        double transactionAmount
+    ) {
         Branch branch = findBranch(branchName);
 
         if (branch == null) {
@@ -66,16 +70,11 @@ public class Bank {
         int transactionIndex = 1;
 
         for (Customer customer : branch.getCustomers()) {
-            System.out.printf("Client: %s [%d]\n",
-                customer.getName(),
-                customerIndex);
+            System.out.printf("Client: %s [%d]\n", customer.getName(), customerIndex);
 
             if (printsTransactions) {
                 for (double transaction : customer.getTransactions()) {
-                    System.out.printf("[%d] value %.2f\n",
-                        transactionIndex,
-                        transaction);
-
+                    System.out.printf("[%d] value %.2f\n", transactionIndex, transaction);
                     transactionIndex++;
                 }
                 transactionIndex = 1;
@@ -90,7 +89,7 @@ public class Bank {
         return this.name;
     }
 
-    public ArrayList<Branch> getBranches() {
+    public List<Branch> getBranches() {
         return this.branches;
     }
 
@@ -98,7 +97,7 @@ public class Bank {
         this.name = name;
     }
 
-    public void setBranches(ArrayList<Branch> branches) {
+    public void setBranches(List<Branch> branches) {
         this.branches = branches;
     }
 }

@@ -1,4 +1,4 @@
-import activity.*;
+import activity.Activity;
 
 public class WorkflowMachine {
     public void execute(Workflow workflow) {

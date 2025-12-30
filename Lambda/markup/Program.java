@@ -1,15 +1,19 @@
 public class Program {
     public static void main(String[] args) {
-        Product product1 = new Product(129.99, "Mouse Gamer");
+        Product product = new Product(129.99d, "Mouse Gamer");
 
-        System.out.printf("%s - %.2f - %.2f\n", product1.getName(),
-            product1.getPrice(),
-            product1.priceWithMarkup.get());
+        System.out.printf(
+            "%s - %.2f - %.2f\n", product.getName(),
+            product.getPrice(),
+            product.priceWithMarkup.get()
+        );
 
-        product1.updateMarkup.accept(15d);
+        product.updateMarkup.accept(15.0d);
 
-        System.out.printf("%s - %.2f - %.2f\n", product1.getName(),
-            product1.getPrice(),
-            product1.priceWithMarkup.get());
+        System.out.printf(
+            "%s - %.2f - %.2f\n", product.getName(),
+            product.getPrice(),
+            product.priceWithMarkup.get()
+        );
     }
 }

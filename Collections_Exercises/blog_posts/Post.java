@@ -6,22 +6,26 @@ public class Post implements Comparable<Post> {
     private String body;
     private Categories category;
 
-    public Post(Author author,
+    public Post(
+        Author author,
         String title,
         String body,
-        Categories category) {
-            setAuthor(author);
-            setTitle(title);
-            setBody(body);
-            setCategory(category);
+        Categories category
+    ) {
+        setAuthor(author);
+        setTitle(title);
+        setBody(body);
+        setCategory(category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.author,
+        return Objects.hash(
+            this.author,
             this.title,
             this.body,
-            this.category);
+            this.category
+        );
     }
 
     @Override

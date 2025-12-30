@@ -15,27 +15,35 @@ public class Program {
 
         int quantityRemoved = order.removeFlavor("Nutella");
 
-        System.out.println(String.format("Total: %d - Removed: %d",
+        System.out.println(
+            String.format("Total: %d - Removed: %d",
             order.getTotalBoxes(),
-            quantityRemoved));
+            quantityRemoved)
+        );
 
         quantityRemoved = order.removeFlavor("Chocolate");
 
-        System.out.println(String.format("Total: %d - Removed: %d",
+        System.out.println(
+            String.format("Total: %d - Removed: %d",
             order.getTotalBoxes(),
-            quantityRemoved));
+            quantityRemoved)
+        );
 
         quantityRemoved = order.removeFlavor("Vanilla");
 
-        System.out.println(String.format("Total: %d - Removed: %d",
+        System.out.println(
+            String.format("Total: %d - Removed: %d",
             order.getTotalBoxes(),
-            quantityRemoved));
+            quantityRemoved)
+        );
 
         quantityRemoved = order.removeFlavor("Chocolate");
 
-        System.out.println(String.format("Total: %d - Removed: %d",
+        System.out.println(
+            String.format("Total: %d - Removed: %d",
             order.getTotalBoxes(),
-            quantityRemoved));
+            quantityRemoved)
+        );
 
         order.addCookieOrder(new CookieOrder("Nutella", 5));
 

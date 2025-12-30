@@ -4,23 +4,27 @@ public class Product {
     private ProductCategory category;
     private double price;
 
-    public Product(int code,
+    public Product(
+        int code,
         String name,
         ProductCategory category,
-        double price) {
-            setCode(code);
-            setName(name);
-            setCategory(category);
-            setPrice(price);
+        double price
+    ) {
+        setCode(code);
+        setName(name);
+        setCategory(category);
+        setPrice(price);
     }
 
     @Override
     public String toString() {
-        return String.format("[%d] %s %s $ %.2f",
+        return String.format(
+            "[%d] %s %s $ %.2f",
             this.code,
             this.name,
             this.category,
-            this.price);
+            this.price
+        );
     }
 
     public int getCode() {

@@ -1,5 +1,5 @@
-// compile: javac -cp "junit-jupiter-api-6.0.0.jar:apiguardian-api-1.1.2.jar" -d target PersonTest.java Person.java
-// run: java -jar junit-platform-console-standalone-6.0.0.jar execute -cp target --select-class PersonTest
+// javac -cp "junit-jupiter-api-6.0.0.jar:apiguardian-api-1.1.2.jar" -d target PersonTest.java Person.java
+// java -jar junit-platform-console-standalone-6.0.0.jar execute -cp target --select-class PersonTest
 
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;

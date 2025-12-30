@@ -1,8 +1,11 @@
 public class Teams implements NotificationChannel {
     @Override
     public void notify(Message message) {
-        System.out.printf("[TEAMS] {%s} - %s",
+        System.out.printf(
+            "[%s] {%s} - %s",
+            this.getClass().getSimpleName(),
             message.getMessageType(),
-            message.getText());
+            message.getText()
+        );
     }
 }

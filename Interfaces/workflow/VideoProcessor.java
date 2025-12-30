@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class VideoProcessor {
-    private ArrayList<NotificationChannel> channels;
+    private List<NotificationChannel> channels;
 
     public VideoProcessor() {
         setChannels(new ArrayList<NotificationChannel>());
@@ -12,8 +13,10 @@ public class VideoProcessor {
     }
 
     public void process(Video video) {
-        Message message = new Message(String.format("%s - %s", video.getFile(),
-            video.getFormatVideo()), MessageType.LOG);
+        Message message = new Message(
+            String.format("%s - %s", video.getFile(), video.getFormatVideo()),
+            MessageType.LOG
+        );
 
         for (NotificationChannel channel : this.channels) {
             channel.notify(message);
@@ -21,11 +24,11 @@ public class VideoProcessor {
         }
     }
 
-    public ArrayList<NotificationChannel> getChannels() {
+    public List<NotificationChannel> getChannels() {
         return this.channels;
     }
 
-    public void setChannels(ArrayList<NotificationChannel> channels) {
+    public void setChannels(List<NotificationChannel> channels) {
         this.channels = channels;
     }
 }

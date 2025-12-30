@@ -1,54 +1,54 @@
 public class Program {
-    public static void main(String[] args) {
-        try {
-            PositiveInteger positiveInteger = new PositiveInteger("1");
-            System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+	public static void main(String[] args) {
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger("1");
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        PositiveInteger positiveInteger1 = null;
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger("43");
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            positiveInteger1 = new PositiveInteger("43");
-            System.out.println(positiveInteger1.getValue() + " - " + positiveInteger1.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger("0");;
+			positiveInteger.setValue(-1);
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            positiveInteger1.setValue(-1);
-            System.out.println(positiveInteger1.getValue() + " - " + positiveInteger1.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger("0");;
+			positiveInteger.setValue(positiveInteger.getValue() + 1);
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            positiveInteger1.setValue(positiveInteger1.getValue() + 1);
-            System.out.println(positiveInteger1.getValue() + " - " + positiveInteger1.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger("-3");
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            PositiveInteger positiveInteger = new PositiveInteger("-3");
-            System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger(379);
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
 
-        try {
-            PositiveInteger positiveInteger = new PositiveInteger(379);
-            System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        try {
-            PositiveInteger positiveInteger = new PositiveInteger(378);
-            System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+		try {
+			PositiveInteger positiveInteger = new PositiveInteger(378);
+			System.out.println(positiveInteger.getValue() + " - " + positiveInteger.isPrime());
+		} catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
+	}
 }
