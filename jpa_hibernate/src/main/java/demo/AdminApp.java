@@ -1,70 +1,63 @@
 package demo;
 
-import entities.*;
-import models.*;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+import models.PersonModel;
+import models.ProductModel;
+
+import entities.Person;
+import entities.Product;
+
 import java.time.LocalDate;
 
 public class AdminApp {
     public static void main(String[] args) {
-        Person person = new Person();
+        try (
+            EntityManagerFactory entityManagerFactory
+            = Persistence.createEntityManagerFactory("admin-jpa")
+        ) {
+            PersonModel personModel = new PersonModel(entityManagerFactory);
+            ProductModel productModel = new ProductModel(entityManagerFactory);
 
-        person.setName("Jake The Dog");
-        person.setEmail("jakethedog@landofooo.com");
-        person.setCpf("334.678.543-90");
-        person.setBirthDate(LocalDate.of(1998, 11, 18));
+            Person person = new Person();
+            person.setName("person");
+            person.setEmail("email@mail.com");
+            person.setCpf("000.000.000-00");
+            person.setBirthDate(LocalDate.now());
 
-        Product product = new Product();
+            Product product = new Product();
+            product.setName("product");
+            product.setQuantity(0);
+            product.setPrice(0.0d);
+            product.setStatus(true);
 
-        product.setName("Pancake");
-        product.setQuantity(12);
-        product.setPrice(1.99d);
-        product.setStatus(true);
+            personModel.create(person);
+            productModel.create(product);
 
-        PersonModel personModel = new PersonModel();
-        ProductModel productModel = new ProductModel();
+            System.out.println(personModel.findById(person.getId()));
+            System.out.println(productModel.findById(product.getId()));
 
-        personModel.create(person);
-        productModel.create(product);
+            person.setCpf("111.111.111-11");
+            product.setStatus(false);
 
-        System.out.println(personModel.findAll());
-        System.out.println(productModel.findAll());
+            person = personModel.update(person);
+            product = productModel.update(product);
 
-        System.out.println(personModel.findById(person));
-        System.out.println(productModel.findById(product));
+            personModel.deleteById(person.getId());
+            productModel.deleteById(product.getId());
 
-        person.setName("Cake");
-        person.setEmail("cakethecat@ooo.com");
+            System.out.println(personModel.findAll());
+            System.out.println(productModel.findAll());
 
-        product.setName("Apple pie");
-        product.setStatus(false);
+            person.setId(null);
+            product.setId(null);
 
-        personModel.update(person);
-        productModel.update(product);
+            personModel.create(person);
+            productModel.create(product);
 
-        System.out.println(personModel.findById(person));
-        System.out.println(productModel.findById(product));
-
-        personModel.delete(person);
-        productModel.delete(product);
-
-        Person anotherPerson = new Person();
-
-        anotherPerson.setName("Finn Mertens");
-        anotherPerson.setEmail("finn@landofooo.com");
-        anotherPerson.setCpf("111.222.333-44");
-        anotherPerson.setBirthDate(LocalDate.of(2001, 3, 14));
-
-        Product anotherProduct = new Product();
-
-        anotherProduct.setName("Enchiridion");
-        anotherProduct.setQuantity(1);
-        anotherProduct.setPrice(999.99d);
-        anotherProduct.setStatus(true);
-
-        personModel.create(anotherPerson);
-        productModel.create(anotherProduct);
-
-        personModel.close();
-        productModel.close();
+            System.out.println(personModel.findAll());
+            System.out.println(productModel.findAll());
+        }
     }
 }

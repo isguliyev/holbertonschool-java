@@ -1,5 +1,10 @@
 import food.Food;
-import mood.*;
+
+import mood.Angry;
+import mood.Happy;
+import mood.Mood;
+import mood.Sad;
+import mood.VeryHappy;
 
 public class Character {
     private int happinessPoints;

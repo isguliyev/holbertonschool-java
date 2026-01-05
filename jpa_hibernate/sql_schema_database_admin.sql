@@ -1,6 +1,6 @@
 CREATE TABLE Person (
     id integer,
-    age integer not null,
+    age smallint,
     birthDate date,
     cpf varchar(255),
     email varchar(255),
@@ -12,7 +12,7 @@ CREATE TABLE Product (
     id integer,
     name varchar(255),
     price float not null,
-    quantity integer not null,
+    quantity integer,
     status boolean not null,
     primary key (id)
 );

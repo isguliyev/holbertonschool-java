@@ -1,4 +1,11 @@
-import food.*;
+import food.Apple;
+import food.Cram;
+import food.Food;
+import food.HoneyCake;
+import food.Lembas;
+import food.Melon;
+import food.Mushroom;
+import food.OtherFood;
 
 public class Program {
     public static void main(String[] args) {

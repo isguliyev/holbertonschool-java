@@ -1,4 +1,7 @@
-import activity.*;
+import activity.EncodeVideo;
+import activity.ModifyVideoStatus;
+import activity.SendEmail;
+import activity.UploadVideo;
 
 public class Program {
     public static void main(String[] args) {

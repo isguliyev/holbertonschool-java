@@ -1,100 +1,124 @@
 package models;
 
 import entities.Product;
+
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
+
+import java.util.Optional;
 import java.util.List;
-import java.util.ArrayList;
 
 public class ProductModel {
-    private final EntityManagerFactory entityManagerFactory
-    = Persistence.createEntityManagerFactory("admin-jpa");
+    private final EntityManagerFactory entityManagerFactory;
+
+    public ProductModel(EntityManagerFactory entityManagerFactory) {
+        if (entityManagerFactory == null) {
+            throw new IllegalArgumentException(
+                "Cannot create ProductModel object: entityManagerFactory is null"
+            );
+        }
+
+        this.entityManagerFactory = entityManagerFactory;
+    }
 
     public void create(Product product) {
         if (product == null) {
-            System.err.println("product is null");
-            return;
+            throw new IllegalArgumentException("Cannot create Product: product is null");
         }
 
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
+        EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+
+        try {
             entityManager.getTransaction().begin();
             entityManager.persist(product);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
-            System.err.println(exception.getMessage());
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+
+            throw exception;
+        } finally {
+            entityManager.close();
         }
     }
 
-    public void update(Product product) {
+    public Product update(Product product) {
         if (product == null) {
-            System.err.println("product is null");
-            return;
+            throw new IllegalArgumentException("Cannot update Product: product is null");
         }
 
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
+        if (product.getId() == null || product.getId() < 1) {
+            throw new IllegalArgumentException("Cannot update Product: invalid product id");
+        }
+
+        Product mergedProduct = null;
+        EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+
+        try {
             entityManager.getTransaction().begin();
-            entityManager.merge(product);
+            mergedProduct = entityManager.merge(product);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
-            System.err.println(exception.getMessage());
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+
+            throw exception;
+        } finally {
+            entityManager.close();
+        }
+
+        return mergedProduct;
+    }
+
+    public void deleteById(long id) {
+        if (id < 1) {
+            throw new IllegalArgumentException("Cannot delete Product: invalid product id");
+        }
+
+        EntityManager entityManager = this.entityManagerFactory.createEntityManager();
+
+        try {
+            entityManager.getTransaction().begin();
+
+            Product product = entityManager.find(Product.class, id);
+
+            if (product == null) {
+                throw new IllegalArgumentException(
+                    String.format("Cannot delete Product: no product found with id=%d", id)
+                );
+            }
+
+            entityManager.remove(product);
+            entityManager.getTransaction().commit();
+        } catch (Exception exception) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+
+            throw exception;
+        } finally {
+            entityManager.close();
         }
     }
 
-    public void delete(Product product) {
-        if (product == null) {
-            System.err.println("product is null");
-            return;
+    public Optional<Product> findById(long id) {
+        if (id < 1) {
+            throw new IllegalArgumentException("Cannot find Product: invalid product id");
         }
 
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
-            entityManager.getTransaction().begin();
-            entityManager.remove(entityManager.find(product.getClass(), product.getId()));
-            entityManager.getTransaction().commit();
-        } catch (Exception exception) {
-            System.err.println(exception.getMessage());
+        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
+            return Optional.ofNullable(entityManager.find(Product.class, id));
         }
-    }
-
-    public Product findById(Product product) {
-        if (product == null) {
-            System.err.println("product is null");
-            return null;
-        }
-
-        Product result = null;
-
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
-            entityManager.getTransaction().begin();
-            result = entityManager.find(product.getClass(), product.getId());
-            entityManager.getTransaction().commit();
-        } catch (Exception exception) {
-            System.err.println(exception.getMessage());
-        }
-
-        return result;
     }
 
     public List<Product> findAll() {
-        List<Product> products = new ArrayList<Product>();
-
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager();) {
-            entityManager.getTransaction().begin();
-
-            products = entityManager.createNativeQuery(
-                "SELECT * FROM Product",
+        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
+            return entityManager.createQuery(
+                "SELECT p FROM Product p",
                 Product.class
             ).getResultList();
-
-            entityManager.getTransaction().commit();
-        } catch (Exception exception) {
-            System.err.println(exception.getMessage());
         }
-
-        return products;
-    }
-
-    public void close() {
-        entityManagerFactory.close();
     }
 }

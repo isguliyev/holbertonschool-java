@@ -1,4 +1,3 @@
-import java.util.*;
 public class Program {
     public static void main(String[] args) {
         Book book1 = new Book("The Great Gatsby", 1);
@@ -11,14 +10,14 @@ public class Program {
         Newspaper newspaper1 = new Newspaper("The New York Times", 130);
         Newspaper newspaper2 = new Newspaper("The Wall Street Journal", 113);
 
-        Library<Book> bookLibrary = new Library<>();
+        Library<Book> bookLibrary = new Library<Book>();
         bookLibrary.addMedia(book1);
         bookLibrary.addMedia(book2);
         bookLibrary.addMedia(book3);
 
         System.out.println(bookLibrary.getMediaList());
 
-        Library<Media> mediaLibrary = new Library<>();
+        Library<Media> mediaLibrary = new Library<Media>();
         mediaLibrary.addMedia(book1);
         mediaLibrary.addMedia(video1);
         mediaLibrary.addMedia(video2);

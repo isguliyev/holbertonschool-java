@@ -1,6 +1,7 @@
 package models;
 
-import entities.Person;
+import entities.Student;
+import entities.Course;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityManager;
@@ -8,29 +9,29 @@ import jakarta.persistence.EntityManager;
 import java.util.Optional;
 import java.util.List;
 
-public class PersonModel {
+public class StudentModel {
     private final EntityManagerFactory entityManagerFactory;
 
-    public PersonModel(EntityManagerFactory entityManagerFactory) {
+    public StudentModel(EntityManagerFactory entityManagerFactory) {
         if (entityManagerFactory == null) {
             throw new IllegalArgumentException(
-                "Cannot create PersonModel object: entityManagerFactory is null"
+                "Cannot create StudentModel object: entityManagerFactory is null"
             );
         }
 
         this.entityManagerFactory = entityManagerFactory;
     }
 
-    public void create(Person person) {
-        if (person == null) {
-            throw new IllegalArgumentException("Cannot create Person: person is null");
+    public void create(Student student) {
+        if (student == null) {
+            throw new IllegalArgumentException("Cannot create Student: student is null");
         }
 
         EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(person);
+            entityManager.persist(student);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             if (entityManager.getTransaction().isActive()) {
@@ -43,21 +44,22 @@ public class PersonModel {
         }
     }
 
-    public Person update(Person person) {
-        if (person == null) {
-            throw new IllegalArgumentException("Cannot update Person: person is null");
+
+    public Student update(Student student) {
+        if (student == null) {
+            throw new IllegalArgumentException("Cannot update Student: student is null");
         }
 
-        if (person.getId() == null || person.getId() < 1) {
-            throw new IllegalArgumentException("Cannot update Person: invalid person id");
+        if (student.getId() == null || student.getId() < 1) {
+            throw new IllegalArgumentException("Cannot update Student: invalid student id");
         }
 
-        Person mergedPerson = null;
+        Student mergedStudent = null;
         EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 
         try {
             entityManager.getTransaction().begin();
-            mergedPerson = entityManager.merge(person);
+            mergedStudent = entityManager.merge(student);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             if (entityManager.getTransaction().isActive()) {
@@ -69,28 +71,52 @@ public class PersonModel {
             entityManager.close();
         }
 
-        return mergedPerson;
+        return mergedStudent;
+    }
+
+    public Optional<Student> findById(long id) {
+        if (id < 1) {
+            throw new IllegalArgumentException("Cannot find Student: invalid student id");
+        }
+
+        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
+            return Optional.ofNullable(entityManager.find(Student.class, id));
+        }
+    }
+
+    public List<Student> findAll() {
+        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
+            return entityManager.createQuery(
+                "SELECT s FROM Student s",
+                Student.class
+            ).getResultList();
+        }
     }
 
     public void deleteById(long id) {
         if (id < 1) {
-            throw new IllegalArgumentException("Cannot delete Person: invalid person id");
+            throw new IllegalArgumentException("Cannot delete Student: invalid student id");
         }
 
         EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 
         try {
             entityManager.getTransaction().begin();
+            Student student = entityManager.find(Student.class, id);
 
-            Person person = entityManager.find(Person.class, id);
-
-            if (person == null) {
+            if (student == null) {
                 throw new IllegalArgumentException(
-                    String.format("Cannot delete Person: no person found with id=%d", id)
+                    String.format("Cannot delete Student: no student found with id=%d", id)
                 );
             }
 
-            entityManager.remove(person);
+            for (Course course : student.getCourses()) {
+                course.getStudents().remove(student);
+            }
+
+            student.getCourses().clear();
+
+            entityManager.remove(student);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {
             if (entityManager.getTransaction().isActive()) {
@@ -100,25 +126,6 @@ public class PersonModel {
             throw exception;
         } finally {
             entityManager.close();
-        }
-    }
-
-    public Optional<Person> findById(long id) {
-        if (id < 1) {
-            throw new IllegalArgumentException("Cannot find Person: invalid person id");
-        }
-
-        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
-            return Optional.ofNullable(entityManager.find(Person.class, id));
-        }
-    }
-
-    public List<Person> findAll() {
-        try (EntityManager entityManager = this.entityManagerFactory.createEntityManager()) {
-            return entityManager.createQuery(
-                "SELECT p FROM Person p",
-                Person.class
-            ).getResultList();
         }
     }
 }
