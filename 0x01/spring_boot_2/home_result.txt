@@ -1,0 +1,2 @@
+$ curl http://localhost:8080/messages/home
+MAVEN PROJECT (SPRING INITIALIZR) SUCCESSFULLY CREATED!!!

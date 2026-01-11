@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping(value="/messages")
+@RequestMapping(value = "/messages")
 public class MessageResource {
     private final int MAX_USER_LENGTH = 15;
     private final int MAX_PASSWORD_LENGTH = 15;
