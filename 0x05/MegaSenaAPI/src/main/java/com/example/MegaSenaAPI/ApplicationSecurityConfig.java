@@ -14,7 +14,7 @@ class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
             (requests) -> requests
-                .requestMatchers("/megasena/getNumbers")
+                .requestMatchers("/megasena/simpleMessageWelcome")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
