@@ -27,9 +27,19 @@ public class Student {
     private String data;
     @ManyToMany(mappedBy = "students", fetch = FetchType.EAGER)
     private Set<Course> courses;
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(
+        mappedBy = "student",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER,
+        orphanRemoval = true
+    )
     private Set<Address> addresses;
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(
+        mappedBy = "student",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER,
+        orphanRemoval = true
+    )
     private Set<Phone> phones;
 
     public Student() {

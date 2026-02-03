@@ -20,9 +20,9 @@ CREATE TABLE course_material (
 );
 
 CREATE TABLE course_student (
-    course_id bigint not null,
-    student_id bigint not null,
-    primary key (course_id, student_id)
+    courseId bigint not null,
+    studentId bigint not null,
+    primary key (courseId, studentId)
 );
 
 CREATE TABLE phone (

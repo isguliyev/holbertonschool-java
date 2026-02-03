@@ -31,8 +31,8 @@ public class Course {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "course_student",
-        joinColumns = @JoinColumn(name = "course_id"),
-        inverseJoinColumns = @JoinColumn(name = "student_id")
+        joinColumns = @JoinColumn(name = "courseId"),
+        inverseJoinColumns = @JoinColumn(name = "studentId")
     )
     private Set<Student> students;
     @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
