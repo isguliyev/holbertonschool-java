@@ -6,5 +6,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class JpaH2DemoApplicationTests {
 	@Test
-	void contextLoads() {}
+	public void contextLoads() {}
 }

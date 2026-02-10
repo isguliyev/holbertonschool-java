@@ -20,6 +20,43 @@ public class Address {
     private Customer customer;
     private String data;
 
+    public Address() {}
+
+    public Address(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "%s [id=%d, customer=%s, data=%s]",
+            this.getClass().getSimpleName(),
+            this.id,
+            this.customer,
+            this.data
+        );
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        }
+
+        if (!(object instanceof Address)) {
+            return false;
+        }
+
+        Address address = (Address) object;
+
+        return this.id != null && this.id.equals(address.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
     public Long getId() {
         return this.id;
     }
