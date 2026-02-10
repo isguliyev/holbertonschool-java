@@ -110,12 +110,6 @@ public class CourseModel {
                 );
             }
 
-            for (Student student : course.getStudents()) {
-                student.getCourses().remove(course);
-            }
-
-            course.getStudents().clear();
-
             entityManager.remove(course);
             entityManager.getTransaction().commit();
         } catch (Exception exception) {

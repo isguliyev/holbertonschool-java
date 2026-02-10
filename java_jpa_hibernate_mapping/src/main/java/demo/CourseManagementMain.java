@@ -14,73 +14,149 @@ import models.TeacherModel;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.EntityManagerFactory;
 
+import java.util.Set;
+
 public class CourseManagementMain {
-    public static void main(String[] args) {
-        try (
-            EntityManagerFactory entityManagerFactory
-            = Persistence.createEntityManagerFactory("course-management-jpa")
-        ) {
-            CourseModel courseModel = new CourseModel(entityManagerFactory);
-            StudentModel studentModel = new StudentModel(entityManagerFactory);
-            TeacherModel teacherModel = new TeacherModel(entityManagerFactory);
+	private static final String PERSISTENCE_UNIT = "course-management-jpa";
 
-            Student student = new Student();
-            student.setData("student-data");
+	public static void main(String[] args) {
+		try (
+			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(
+				PERSISTENCE_UNIT
+			)
+		) {
+			CourseModel courseModel = new CourseModel(entityManagerFactory);
+			StudentModel studentModel = new StudentModel(entityManagerFactory);
+			TeacherModel teacherModel = new TeacherModel(entityManagerFactory);
 
-            Address address = new Address();
-            address.setData("address-data");
 
-            Phone phone = new Phone();
-            phone.setData("phone-data");
+			Course course = new Course(
+				"course-data",
+				Set.of(
+					new Student(
+						"student-data",
+						Set.of(
+							new Address("address-data"),
+							new Address("address-data")
+						),
+						Set.of(
+							new Phone("phone-data"),
+							new Phone("phone-data")
+						)
+					),
+					new Student(
+						"student-data",
+						Set.of(
+							new Address("address-data"),
+							new Address("address-data")
+						),
+						Set.of(
+							new Phone("phone-data"),
+							new Phone("phone-data")
+						)
+					)
+				),
+				new CourseMaterial("courseMaterial-data"),
+				new Teacher("teacher-data")
+			);
 
-            Teacher teacher = new Teacher();
-            teacher.setData("teacher-data");
+			Student student = new Student(
+				"student-data",
+				Set.of(
+					new Course(
+						"course-data",
+						new CourseMaterial("courseMaterial-data"),
+						new Teacher("teacher-data")
+					),
+					new Course(
+						"course-data",
+						new CourseMaterial("courseMaterial-data"),
+						new Teacher("teacher-data")
+					)
+				),
+				Set.of(new Address("address-data"), new Address("address-data")),
+				Set.of(new Phone("phone-data"), new Phone("phone-data"))
+			);
 
-            Course course = new Course();
-            course.setData("course-data");
+			Teacher teacher = new Teacher(
+				"teacher-data",
+				Set.of(
+					new Course(
+						"course-data",
+						Set.of(
+							new Student(
+								"student-data",
+								Set.of(
+									new Address("address-data"),
+									new Address("address-data")
+								),
+								Set.of(
+									new Phone("phone-data"),
+									new Phone("phone-data")
+								)
+							),
+							new Student(
+								"student-data",
+								Set.of(
+									new Address("address-data"),
+									new Address("address-data")
+								),
+								Set.of(
+									new Phone("phone-data"),
+									new Phone("phone-data")
+								)
+							)
+						),
+						new CourseMaterial("courseMaterial-data")
+					)
+				)
+			);
 
-            CourseMaterial courseMaterial = new CourseMaterial();
-            courseMaterial.setData("courseMaterial-data");
+			courseModel.create(course);
+			studentModel.create(student);
+			teacherModel.create(teacher);
 
-            courseModel.create(course);
-            studentModel.create(student);
-            teacherModel.create(teacher);
+			course = courseModel.findById(course.getId()).orElseThrow(
+				() -> new RuntimeException("course not found")
+			);
+			student = studentModel.findById(student.getId()).orElseThrow(
+				() -> new RuntimeException("student not found")
+			);
+			teacher = teacherModel.findById(teacher.getId()).orElseThrow(
+				() -> new RuntimeException("teacher not found")
+			);
 
-            System.out.println(courseModel.findById(course.getId()));
-            System.out.println(studentModel.findById(student.getId()));
-            System.out.println(teacherModel.findById(teacher.getId()));
+			System.out.println();
+			System.out.println(course);
+			System.out.println(student);
+			System.out.println(teacher);
 
-            address.setStudent(student);
+			System.out.println();
+			System.out.println(courseModel.findAll());
+			System.out.println(studentModel.findAll());
+			System.out.println(teacherModel.findAll());
 
-            course.getStudents().add(student);
-            course.setCourseMaterial(courseMaterial);
-            course.setTeacher(teacher);
+			course.setData("new-course-data");
+			student.setData("new-student-data");
+			teacher.setData("new-teacher-data");
 
-            courseMaterial.setCourse(course);
+			course = courseModel.update(course);
+			student = studentModel.update(student);
+			teacher = teacherModel.update(teacher);
 
-            phone.setStudent(student);
+			System.out.println();
+			System.out.println(course);
+			System.out.println(student);
+			System.out.println(teacher);
 
-            student.getAddresses().add(address);
-            student.getPhones().add(phone);
-            student.getCourses().add(course);
+			courseModel.deleteById(course.getId());
+			studentModel.deleteById(student.getId());
+			teacherModel.deleteById(teacher.getId());
 
-            teacher.getCourses().add(course);
-
-            course = courseModel.update(course);
-            student = studentModel.update(student);
-            teacher = teacherModel.update(teacher);
-
-            System.out.println(course.getStudents());
-            System.out.println(course.getCourseMaterial());
-            System.out.println(course.getTeacher());
-
-            System.out.println(student.getAddresses());
-            System.out.println(student.getPhones());
-            System.out.println(student.getCourses());
-
-            System.out.println(teacher.getCourses());
-
-            courseModel.deleteById(course.getId());
-        }
-    }
+			System.out.println();
+			System.out.println(courseModel.findAll());
+			System.out.println(studentModel.findAll());
+			System.out.println(teacherModel.findAll());
+		}
+	}
 }

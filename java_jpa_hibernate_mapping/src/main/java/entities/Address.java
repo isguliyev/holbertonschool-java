@@ -23,4 +23,40 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "studentId", referencedColumnName = "id")
     private Student student;
+
+    public Address() {}
+
+    public Address(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "%s [id=%d, data=%s]",
+            this.getClass().getSimpleName(),
+            this.id,
+            this.data
+        );
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        if (!(object instanceof Address)) {
+            return false;
+        }
+
+        Address address = (Address) object;
+
+        return this.id != null && this.id.equals(address.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getClass().hashCode();
+    }
 }
