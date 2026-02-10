@@ -6,6 +6,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,28 +32,26 @@ public class SongController {
     }
 
     @GetMapping
-    public CollectionModel<EntityModel<Song>> getAllSongs() {
+    public CollectionModel<EntityModel<Song>> getAllSongs(Pageable pageable) {
         return CollectionModel.of(
-            this.songModelAssembler.toCollectionModel(this.songRepository.findAll()),
-            linkTo(methodOn(SongController.class).getAllSongs()).withSelfRel()
+            this.songModelAssembler.toCollectionModel(this.songRepository.findAll(pageable)),
+            linkTo(methodOn(SongController.class).getAllSongs(pageable)).withSelfRel()
         );
     }
 
     @GetMapping(path = "/{id}")
     public EntityModel<Song> findSongById(@PathVariable Long id) {
-        Song song = songRepository.findById(id).orElseThrow(
-            () -> new SongNotFoundException(id)
+        return this.songModelAssembler.toModel(
+            this.songRepository.findById(id).orElseThrow(
+                () -> new SongNotFoundException(id)
+            )
         );
-
-        return this.songModelAssembler.toModel(song);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public EntityModel<Song> addSong(@RequestBody Song song) {
-        Song savedSong = this.songRepository.save(song);
-
-        return this.songModelAssembler.toModel(savedSong);
+        return this.songModelAssembler.toModel(this.songRepository.save(song));
     }
 
     @PutMapping(path = "/{id}")
@@ -66,10 +66,9 @@ public class SongController {
         songToUpdate.setName(song.getName());
         songToUpdate.setArtist(song.getArtist());
         songToUpdate.setAlbum(song.getAlbum());
-        songToUpdate.setReleaseYear(song.getReleaseYear());
+        songToUpdate.setReleaseDate(song.getReleaseDate());
 
-        Song updatedSong = this.songRepository.save(songToUpdate);
-        return this.songModelAssembler.toModel(updatedSong);
+        return this.songModelAssembler.toModel(this.songRepository.save(songToUpdate));
     }
 
     @DeleteMapping(path = "/{id}")

@@ -1,6 +1,6 @@
 package com.song.demo;
 
-import java.util.Objects;
+import java.time.LocalDate;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
@@ -15,7 +15,7 @@ public class Song {
     private String name;
     private String artist;
     private String album;
-    private String releaseYear;
+    private LocalDate releaseDate;
 
     public Song() {}
 
@@ -23,12 +23,12 @@ public class Song {
         String name,
         String artist,
         String album,
-        String releaseYear
+        LocalDate releaseDate
     ) {
         this.name = name;
         this.artist = artist;
         this.album = album;
-        this.releaseYear = releaseYear;
+        this.releaseDate = releaseDate;
     }
 
     @Override
@@ -43,28 +43,24 @@ public class Song {
 
         Song song = (Song) object;
 
-        return Objects.equals(song.id, this.id)
-            && Objects.equals(song.name, this.name)
-            && Objects.equals(song.artist, this.artist)
-            && Objects.equals(song.album, this.album)
-            && Objects.equals(song.releaseYear, this.releaseYear);
+        return this.id != null && this.id.equals(song.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.name, this.artist, this.album, this.releaseYear);
+        return getClass().hashCode();
     }
 
     @Override
     public String toString() {
         return String.format(
-            "%s[id=%d, name=%s, artist=%s, album=%s, releaseYear=%s]",
+            "%s [id=%d, name=%s, artist=%s, album=%s, releaseDate=%s]",
             this.getClass().getSimpleName(),
             this.id,
             this.name,
             this.artist,
             this.album,
-            this.releaseYear
+            this.releaseDate
         );
     }
 
@@ -84,8 +80,8 @@ public class Song {
         return this.album;
     }
 
-    public String getReleaseYear() {
-        return this.releaseYear;
+    public LocalDate getReleaseDate() {
+        return this.releaseDate;
     }
 
     public void setId(Long id) {
@@ -104,7 +100,7 @@ public class Song {
         this.album = album;
     }
 
-    public void setReleaseYear(String releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }
