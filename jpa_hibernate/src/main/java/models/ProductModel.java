@@ -81,7 +81,6 @@ public class ProductModel {
 
         try {
             entityManager.getTransaction().begin();
-
             Product product = entityManager.find(Product.class, id);
 
             if (product == null) {

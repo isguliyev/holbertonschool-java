@@ -11,8 +11,8 @@ CREATE TABLE Person (
 CREATE TABLE Product (
     id integer,
     name varchar(255),
-    price float not null,
+    price float,
     quantity integer,
-    status boolean not null,
+    status boolean,
     primary key (id)
 );

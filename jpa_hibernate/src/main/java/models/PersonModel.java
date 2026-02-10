@@ -81,7 +81,6 @@ public class PersonModel {
 
         try {
             entityManager.getTransaction().begin();
-
             Person person = entityManager.find(Person.class, id);
 
             if (person == null) {

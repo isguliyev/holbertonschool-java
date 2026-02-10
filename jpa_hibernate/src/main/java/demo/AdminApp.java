@@ -12,52 +12,108 @@ import entities.Product;
 import java.time.LocalDate;
 
 public class AdminApp {
+    private static final String PERSISTENCE_UNIT = "admin-jpa";
+
     public static void main(String[] args) {
+        Person naruto = new Person(
+            "Naruto Uzumaki",
+            "narutouzumaki@mail.com",
+            "000.000.000-00",
+            LocalDate.of(1993, 10, 4)
+        );
+
+        Person sasuke = new Person(
+            "Sasuke Uchiha",
+            "sasukeuchiha@mail.com",
+            "000.000.000-00",
+            LocalDate.of(1993, 6, 17)
+        );
+
+        Product kunai = new Product("Kunai", 15, 5.0d, true);
+        Product ninjaStar = new Product("Ninja star", 30, 2.0d, true);
+
         try (
-            EntityManagerFactory entityManagerFactory
-            = Persistence.createEntityManagerFactory("admin-jpa")
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(
+                PERSISTENCE_UNIT
+            )
         ) {
             PersonModel personModel = new PersonModel(entityManagerFactory);
             ProductModel productModel = new ProductModel(entityManagerFactory);
 
-            Person person = new Person();
-            person.setName("person");
-            person.setEmail("email@mail.com");
-            person.setCpf("000.000.000-00");
-            person.setBirthDate(LocalDate.now());
+            personModel.create(naruto);
+            personModel.create(sasuke);
 
-            Product product = new Product();
-            product.setName("product");
-            product.setQuantity(0);
-            product.setPrice(0.0d);
-            product.setStatus(true);
+            productModel.create(kunai);
+            productModel.create(ninjaStar);
 
-            personModel.create(person);
-            productModel.create(product);
+            System.out.println(
+                personModel.findById(naruto.getId()).orElseThrow(
+                    () -> new RuntimeException("person not found")
+                )
+            );
+            System.out.println(
+                personModel.findById(sasuke.getId()).orElseThrow(
+                    () -> new RuntimeException("person not found")
+                )
+            );
 
-            System.out.println(personModel.findById(person.getId()));
-            System.out.println(productModel.findById(product.getId()));
+            System.out.println();
+            System.out.println(
+                productModel.findById(kunai.getId()).orElseThrow(
+                    () -> new RuntimeException("product not found")
+                )
+            );
+            System.out.println(
+                productModel.findById(ninjaStar.getId()).orElseThrow(
+                    () -> new RuntimeException("product not found")
+                )
+            );
 
-            person.setCpf("111.111.111-11");
-            product.setStatus(false);
-
-            person = personModel.update(person);
-            product = productModel.update(product);
-
-            personModel.deleteById(person.getId());
-            productModel.deleteById(product.getId());
-
+            System.out.println();
             System.out.println(personModel.findAll());
             System.out.println(productModel.findAll());
 
-            person.setId(null);
-            product.setId(null);
+            personModel.deleteById(sasuke.getId());
+            productModel.deleteById(ninjaStar.getId());
 
-            personModel.create(person);
-            productModel.create(product);
-
+            System.out.println();
             System.out.println(personModel.findAll());
             System.out.println(productModel.findAll());
+
+            naruto.setCpf("111.111.111-11");
+            kunai.setQuantity(20);
+
+            naruto = personModel.update(naruto);
+            kunai = productModel.update(kunai);
+
+            System.out.println();
+            System.out.println(personModel.findAll());
+            System.out.println(productModel.findAll());
+
+            System.out.println();
+
+            boolean isPersonEquals = naruto.equals(
+                personModel.findById(naruto.getId()).orElseThrow(
+                    () -> new RuntimeException("person not found")
+                )
+            );
+            boolean isProductEquals = kunai.equals(
+                productModel.findById(kunai.getId()).orElseThrow(
+                    () -> new RuntimeException("product not found")
+                )
+            );
+
+            if (isPersonEquals) {
+                System.out.println("equals");
+            } else {
+                System.out.println("not equals");
+            }
+
+            if (isProductEquals) {
+                System.out.println("equals");
+            } else {
+                System.out.println("not equals");
+            }
         }
     }
 }

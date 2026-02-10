@@ -17,6 +17,53 @@ public class Product {
     private Long id;
     private String name;
     private Integer quantity;
-    private double price;
-    private boolean status;
+    private Double price;
+    private Boolean status;
+
+    public Product() {}
+
+    public Product(
+        String name,
+        Integer quantity,
+        Double price,
+        Boolean status
+    ) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "%s [id=%d, name=%s, quantity=%d, price=%f, status=%b]",
+            this.getClass().getSimpleName(),
+            this.id,
+            this.name,
+            this.quantity,
+            this.price,
+            this.status
+        );
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        if (!(object instanceof Product)) {
+            return false;
+        }
+
+        Product product = (Product) object;
+
+        return this.id != null && this.id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getClass().hashCode();
+    }
 }
