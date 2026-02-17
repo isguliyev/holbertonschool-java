@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/megasena")
 public class MegaSenaController {
-    private final int NUMBER_COUNT = 6;
-    private final int MIN_NUMBER = 0;
-    private final int MAX_NUMBER = 999999;
 
     @GetMapping("/simpleMessageWelcome")
     public String welcomeMessage() {
@@ -25,6 +21,10 @@ public class MegaSenaController {
     public List<Integer> megaSenaNumbers() {
         Random random = new Random();
         List<Integer> numbers = new ArrayList<Integer>();
+
+        int NUMBER_COUNT = 6;
+        int MIN_NUMBER = 0;
+        int MAX_NUMBER = 999999;
 
         random.ints(NUMBER_COUNT, MIN_NUMBER, MAX_NUMBER).forEach(numbers::add);
 
