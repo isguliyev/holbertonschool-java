@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12fd2aa3-7b7d-4fd5-8c0d-b3247ccbb4a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/AccountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/AccountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/RegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/UpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/account/dto/UpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MegaSenaAPI/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0x06/api-rest-userController/src/main/java/com/example/user/ExceptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0x06/api-rest-userController/src/main/java/com/example/user/ExceptionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0x06/api-rest-userController/src/main/java/com/example/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0x06/api-rest-userController/src/main/java/com/example/user/controller/UserController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="39nR2rvIgORMauqOvmXaWnZYGbA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/iq/Repository/holbertonschool-java/0x05/MegaSenaAPI+JWT"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12fd2aa3-7b7d-4fd5-8c0d-b3247ccbb4a5" name="Changes" comment="" />
+      <created>1771329644509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1771329644509</updated>
+    </task>
+    <servers />
+  </component>
+</project>

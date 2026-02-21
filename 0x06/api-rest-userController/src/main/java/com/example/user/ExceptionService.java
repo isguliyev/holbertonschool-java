@@ -20,6 +20,6 @@ public class ExceptionService {
         userErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
         userErrorResponse.setMessage(exception.getMessage());
 
-        return new ResponseEntity(userErrorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<UserErrorResponse>(userErrorResponse, HttpStatus.NOT_FOUND);
     }
 }

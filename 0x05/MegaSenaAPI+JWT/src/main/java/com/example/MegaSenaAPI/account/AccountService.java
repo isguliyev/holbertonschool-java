@@ -7,7 +7,11 @@ import com.example.MegaSenaAPI.account.dto.UpdateRequest;
 import com.example.MegaSenaAPI.account.exception.AccountDoesNotExistException;
 import com.example.MegaSenaAPI.account.exception.AccountNameAlreadyTakenException;
 
+import com.example.MegaSenaAPI.security.JWTService;
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -17,10 +21,19 @@ import java.util.stream.Collectors;
 public class AccountService {
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
+    private final AuthenticationManager authenticationManager;
+    private final JWTService jwtService;
 
-    public AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public AccountService(
+        AccountRepository accountRepository,
+        AccountMapper accountMapper,
+        AuthenticationManager authenticationManager,
+        JWTService jwtService
+    ) {
         this.accountRepository = accountRepository;
         this.accountMapper = accountMapper;
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
     public AccountResponse registerAccount(RegisterRequest registerRequest) {
@@ -72,5 +85,18 @@ public class AccountService {
         }
 
         this.accountRepository.deleteById(id);
+    }
+
+    public String verify(RegisterRequest registerRequest) {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(registerRequest.name(), registerRequest.password())
+        );
+
+        if (authentication.isAuthenticated()) {
+            return this.jwtService.generateToken(registerRequest);
+//            return "success";
+        }
+
+        return null;
     }
 }

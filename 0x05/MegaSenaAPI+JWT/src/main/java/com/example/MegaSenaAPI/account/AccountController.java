@@ -34,6 +34,11 @@ public class AccountController {
         this.accountModelAssembler = accountModelAssembler;
     }
 
+    @PostMapping(path = "/login")
+    public String login(@RequestBody @Valid RegisterRequest registerRequest) {
+        return this.accountService.verify(registerRequest);
+    }
+
     @GetMapping
     public CollectionModel<EntityModel<AccountResponse>> findAllAccounts() {
         return CollectionModel.of(
@@ -47,7 +52,7 @@ public class AccountController {
         return this.accountModelAssembler.toModel(this.accountService.findAccountById(id));
     }
 
-    @PostMapping
+    @PostMapping(path = "/register")
     public EntityModel<AccountResponse> registerAccount(
         @RequestBody @Valid RegisterRequest registerRequest
     ) {
